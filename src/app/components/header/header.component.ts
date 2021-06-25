@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 import { Router, Event, NavigationStart } from '@angular/router'
 
 @Component({
@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
   showDropdown!: string
   notifications!: string[]
   pageName!: string
+  @Output() openSideBar = new EventEmitter<any>()
 
   constructor(private router: Router) {}
 
@@ -32,5 +33,9 @@ export class HeaderComponent implements OnInit {
 
   loadNotifications(): void {
     this.notifications = ['Printer Down', 'Notifications blocked']
+  }
+
+  openMenu(): void {
+    this.openSideBar.emit()
   }
 }

@@ -1,9 +1,9 @@
 <div class="app">
-  <div class="app__sidebar">
-    <app-sidebar></app-sidebar>
+  <div class="app__sidebar" [class.show-sidebar]="show">
+    <app-sidebar (closeBar)="toggleMenu()"></app-sidebar>
   </div>
   <div class="app__body">
-    <app-header></app-header>
+    <app-header (openSideBar)="toggleMenu()"></app-header>
     <div class="container-fluid">
       <router-outlet></router-outlet>
     </div>

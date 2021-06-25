@@ -7,6 +7,14 @@
   height: 62px;
   border-bottom: 1px solid lightgray;
 
+  &__inf {
+    display: flex;
+    align-items: center;
+    mat-icon {
+      margin-right: 1rem;
+    }
+  }
+
   &__info {
     .header_infoTitle {
       font-weight: 600;
@@ -96,6 +104,16 @@
     img {
       object-fit: contain;
       height: 45px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    .header__inf {
+      mat-icon {
+        display: none;
+      }
     }
   }
 }
