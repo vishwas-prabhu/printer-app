@@ -1,0 +1,48 @@
+.printer {
+  padding-top: 15px;
+  .printer__table {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    .printer__tableHeader {
+      padding: 20px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #dddddd;
+
+      p {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        mat-icon {
+          margin-right: 0.25rem;
+        }
+      }
+    }
+
+    .printer__tableBody {
+      height: 250px;
+      overflow: auto;
+      table {
+        margin-bottom: 0;
+        th {
+          border-color: lightgray;
+        }
+        td {
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .printer__tableFooter {
+      padding: 10px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background: #dddbdb;
+      ul {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

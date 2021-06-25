@@ -1,0 +1,16 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  a {
+    text-decoration: none;
+    padding: 16px 20px;
+  }
+
+  .active {
+    background-color: #413c46;
+  }
+
+  &__icon {
+    color: white;
+  }
+}

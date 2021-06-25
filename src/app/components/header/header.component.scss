@@ -1,0 +1,36 @@
+.header {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 62px;
+  border-bottom: 1px solid lightgray;
+
+  &__info {
+    .header_infoTitle {
+      font-weight: 600;
+      letter-spacing: 0.03rem;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .header_infoSubTitle {
+      font-size: 0.75rem;
+      letter-spacing: 0.03rem;
+      margin-bottom: 0;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    .header__rightIcon {
+      margin-right: 1rem;
+    }
+    img {
+      object-fit: contain;
+      height: 45px;
+    }
+  }
+}
