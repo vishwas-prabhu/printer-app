@@ -1,0 +1,81 @@
+@mixin table-styles {
+  .content__table {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+
+    .content__tableHeader {
+      padding: 12px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #dddddd;
+
+      p {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        font-weight: 600;
+        opacity: 0.8;
+        mat-icon {
+          margin-right: 0.25rem;
+          font-size: 1.25rem;
+          opacity: inherit;
+          position: relative;
+          top: 2px;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        color: #1da5ff;
+        cursor: pointer;
+        font-weight: 600;
+        opacity: 0.8;
+      }
+
+      input {
+        border: 1px solid #999999d7;
+        border-radius: 4px;
+        outline: none;
+        padding-left: 0.5rem;
+        box-sizing: border-box;
+        font-weight: 500;
+      }
+
+      button {
+        padding: 0.1rem 1rem;
+        outline: none;
+        border: none;
+        background: #3490c9;
+        color: white;
+        border-radius: 4px;
+      }
+    }
+
+    .content__tableBody {
+      height: 250px;
+      overflow: auto;
+      table {
+        margin-bottom: 0;
+        th {
+          border-color: lightgray;
+        }
+        td {
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .content__tableFooter {
+      padding: 10px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background: #dddbdb;
+      ul {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

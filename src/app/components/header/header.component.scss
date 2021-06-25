@@ -25,6 +25,69 @@
   &__right {
     display: flex;
     align-items: center;
+    .header__rightOption {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 45px;
+
+      .tool-tip {
+        position: absolute;
+        right: 0px;
+        top: 3.2rem;
+        background: #ececec;
+        z-index: 11;
+        border: 1px solid lightgray;
+        border-radius: 4px;
+        width: max-content;
+        display: none;
+
+        .arrow {
+          position: absolute;
+          background-color: inherit;
+          width: 8px;
+          height: 8px;
+          right: 1rem;
+          top: -4px;
+          transform: rotate(45deg);
+          border: inherit;
+          border-bottom: none;
+          border-right: none;
+        }
+
+        .title {
+          padding: 0.5rem 2rem;
+          text-align: center;
+          margin: 0;
+          border-bottom: 1px solid lightgray;
+          font-weight: 600;
+          cursor: default;
+        }
+
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          text-align: left;
+
+          li {
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            cursor: default;
+            &:hover {
+              background-color: #e4e4e4;
+            }
+          }
+        }
+
+        .logout {
+          padding: 0.5rem 1rem;
+          border-top: 1px solid lightgray;
+          border-bottom: none;
+          text-align: left;
+        }
+      }
+    }
     .header__rightIcon {
       margin-right: 1rem;
     }

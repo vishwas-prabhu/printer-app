@@ -9,6 +9,9 @@ import { MaterialModule } from './shared/material'
 import { HeaderComponent } from './components/header/header.component'
 import { PrinterComponent } from './components/printer/printer.component'
 import { HomeComponent } from './components/home/home.component'
+import { UserTableComponent } from './components/tables/user-table/user-table.component'
+import { JobsTableComponent } from './components/tables/jobs-table/jobs-table.component'
+import { PrintTableComponent } from './components/tables/print-table/print-table.component'
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { HomeComponent } from './components/home/home.component'
     HeaderComponent,
     PrinterComponent,
     HomeComponent,
+    UserTableComponent,
+    JobsTableComponent,
+    PrintTableComponent,
   ],
   imports: [
     BrowserModule,
