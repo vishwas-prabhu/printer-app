@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
+import { PrinterData } from 'src/app/interfaces/printerData'
+import { PrinterService } from 'src/app/services/printer.service'
 
 @Component({
   selector: 'app-print-table',
@@ -7,8 +9,17 @@ import { Component, Input, OnInit } from '@angular/core'
 })
 export class PrintTableComponent implements OnInit {
   @Input() paginate!: boolean
+  printerData: PrinterData[] = []
 
-  constructor() {}
+  constructor(private printerService: PrinterService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadPrinterData()
+  }
+
+  loadPrinterData(): void {
+    this.printerService
+      .getPrintersData()
+      .subscribe((data: PrinterData[]) => (this.printerData = data))
+  }
 }

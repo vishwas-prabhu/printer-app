@@ -1,7 +1,7 @@
 <div class="content__table">
   <div class="content__tableHeader">
     <p><mat-icon>storage</mat-icon> Printers</p>
-    <a>Manage</a>
+    <a data-bs-toggle="modal" data-bs-target="#exampleModal">Manage</a>
   </div>
   <div class="content__tableBody">
     <table class="table">
@@ -13,10 +13,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]">
-          <td>HPVMPC001</td>
-          <td>161.168.1.1</td>
-          <td><mat-icon>done</mat-icon></td>
+        <tr *ngFor="let printer of printerData">
+          <td>{{ printer.printerName }}</td>
+          <td>{{ printer.printerIp }}</td>
+          <td class="status" [class.error]="!printer.status">
+            <mat-icon>{{ printer.status ? 'done' : 'warning' }}</mat-icon>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -33,5 +35,37 @@
         <a class="page-link" href="#">&gt;&gt;</a>
       </li>
     </ul>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel">Modal title</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <h3>Woohoo!, you're reading this text in a modal!</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>

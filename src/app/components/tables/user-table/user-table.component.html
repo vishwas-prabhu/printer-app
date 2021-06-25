@@ -14,11 +14,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of [1, 2, 3]">
-          <td>1</td>
-          <td>Vishwas prabhu</td>
-          <td>super admin</td>
-          <td>AZ0012TR</td>
+        <tr *ngFor="let user of usersData">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.account }}</td>
         </tr>
       </tbody>
     </table>

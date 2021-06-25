@@ -1,15 +1,17 @@
 @mixin table-styles {
   .content__table {
-    border: 1px solid lightgray;
+    border: 1px solid #ccccccd4;
     border-radius: 4px;
     margin-bottom: 1rem;
+    background: white;
+    box-shadow: 2px 2px 14px 4px #7070701c;
 
     .content__tableHeader {
       padding: 12px 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #dddddd;
+      background: #dfdfdfc4;
 
       p {
         display: flex;

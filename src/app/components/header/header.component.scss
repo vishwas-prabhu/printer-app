@@ -19,6 +19,7 @@
       font-size: 0.75rem;
       letter-spacing: 0.03rem;
       margin-bottom: 0;
+      text-transform: capitalize;
     }
   }
 
@@ -30,6 +31,7 @@
       display: flex;
       align-items: center;
       height: 45px;
+      cursor: pointer;
 
       .tool-tip {
         position: absolute;
@@ -40,7 +42,7 @@
         border: 1px solid lightgray;
         border-radius: 4px;
         width: max-content;
-        display: none;
+        max-width: 200px;
 
         .arrow {
           position: absolute;
