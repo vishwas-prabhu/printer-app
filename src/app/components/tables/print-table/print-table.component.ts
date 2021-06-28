@@ -24,7 +24,6 @@ export class PrintTableComponent implements OnInit {
     this.printerService
       .getPrintersData()
       .subscribe((data: PrinterListResponse) => {
-        console.log(data.printerList)
         this.printerData = data.printerList
       })
   }

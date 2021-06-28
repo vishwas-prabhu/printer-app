@@ -12,6 +12,8 @@
     align-items: center;
     mat-icon {
       margin-right: 1rem;
+      cursor: pointer;
+      display: none;
     }
   }
 
@@ -112,7 +114,7 @@
   .header {
     .header__inf {
       mat-icon {
-        display: none;
+        display: block;
       }
     }
   }

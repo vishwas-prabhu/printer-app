@@ -1,6 +1,9 @@
 <div class="app">
   <div class="app__sidebar" [class.show-sidebar]="show">
-    <app-sidebar (closeBar)="toggleMenu()"></app-sidebar>
+    <app-sidebar
+      [showSideBar]="show"
+      (closeSideBar)="toggleMenu()"
+    ></app-sidebar>
   </div>
   <div class="app__body">
     <app-header (openSideBar)="toggleMenu()"></app-header>
