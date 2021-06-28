@@ -35,6 +35,7 @@ export class PrintTableComponent implements OnInit {
   loadPrinterData(pageNo: number): void {
     if (this.paginate && pageNo !== this.pageNo) {
       this.pageNo = pageNo
+      this.printerData = []
       this.printerService
         .getPrintersDataByPage(pageNo)
         .subscribe((data: PrinterListResponse) => {
