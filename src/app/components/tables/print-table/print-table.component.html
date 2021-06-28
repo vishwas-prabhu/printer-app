@@ -14,10 +14,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let printer of printerData">
-          <td>{{ printer.printerName }}</td>
-          <td>{{ printer.printerIp }}</td>
-          <td class="status" [class.error]="!printer.status">
-            <mat-icon>{{ printer.status ? 'done' : 'warning' }}</mat-icon>
+          <td>{{ printer.id }}</td>
+          <td>{{ printer.name }}</td>
+          <td class="status" [class.error]="printer.status === 'false'">
+            <mat-icon>{{
+              printer.status === 'true' ? 'done' : 'warning'
+            }}</mat-icon>
           </td>
         </tr>
       </tbody>

@@ -1,5 +1,9 @@
 export interface PrinterData {
-  printerName: string
-  printerIp: string
-  status: boolean
+  id: string
+  name: string
+  status: string
+}
+
+export interface PrinterListResponse {
+  printerList: PrinterData[]
 }

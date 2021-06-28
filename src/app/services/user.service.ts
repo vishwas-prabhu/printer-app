@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core'
-import { Observable, of } from 'rxjs'
-import { User } from '../interfaces/user'
-import { USERS_DATA } from '../mocks/mockData'
+import { Observable } from 'rxjs'
+import { DashboardDataResponse, UserResponse } from '../interfaces/user'
+import { environment } from 'src/environments/environment'
+import { HttpClient } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getUsersData(): Observable<User[]> {
-    return of(USERS_DATA)
+  getUsersData(): Observable<UserResponse> {
+    return this.http.get<UserResponse>(`${environment.baseUrl}userList`)
+  }
+
+  getDashboardData(): Observable<DashboardDataResponse> {
+    return this.http.get<DashboardDataResponse>(`${environment.baseUrl}kpiData`)
   }
 }
