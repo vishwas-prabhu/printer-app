@@ -6,4 +6,6 @@ export interface PrinterData {
 
 export interface PrinterListResponse {
   printerList: PrinterData[]
+  totalPages: number
+  pageNumber: number
 }

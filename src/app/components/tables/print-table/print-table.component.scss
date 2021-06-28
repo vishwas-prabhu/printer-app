@@ -14,3 +14,7 @@ h1 {
 .error {
   color: red;
 }
+
+.disabled {
+  pointer-events: none;
+}

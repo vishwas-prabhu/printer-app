@@ -1,7 +1,12 @@
 <div class="content__table">
   <div class="content__tableHeader">
     <p><mat-icon>people</mat-icon> Users</p>
-    <input type="text" placeholder="Search" />
+    <input
+      #searchBox
+      type="text"
+      placeholder="Search"
+      (input)="search(searchBox.value)"
+    />
   </div>
   <div class="content__tableBody">
     <table class="table">
@@ -14,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of usersData; let i = index">
+        <tr *ngFor="let user of usersData | async; let i = index">
           <td>{{ i + 1 }}</td>
           <td>{{ user.userName }}</td>
           <td>{{ user.role }}</td>

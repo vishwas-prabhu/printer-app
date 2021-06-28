@@ -15,4 +15,10 @@ export class PrinterService {
       `${environment.baseUrl}printerList`
     )
   }
+
+  getPrintersDataByPage(pageNo: number): Observable<PrinterListResponse> {
+    return this.http.get<PrinterListResponse>(
+      `${environment.baseUrl}printerList/${pageNo}`
+    )
+  }
 }
