@@ -1,15 +1,18 @@
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable, of } from 'rxjs'
-import { PrinterData } from '../interfaces/printerData'
-import { PRINTER_DATA } from '../mocks/mockData'
+import { environment } from 'src/environments/environment'
+import { PrinterListResponse } from '../interfaces/printerData'
 
 @Injectable({
   providedIn: 'root',
 })
 export class PrinterService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getPrintersData(): Observable<PrinterData[]> {
-    return of(PRINTER_DATA)
+  getPrintersData(): Observable<PrinterListResponse> {
+    return this.http.get<PrinterListResponse>(
+      `${environment.baseUrl}printerList`
+    )
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { User } from 'src/app/interfaces/user'
+import { User, UserResponse } from 'src/app/interfaces/user'
 import { UserService } from 'src/app/services/user.service'
 
 @Component({
@@ -17,8 +17,8 @@ export class UserTableComponent implements OnInit {
   }
 
   loadUserData(): void {
-    this.userService
-      .getUsersData()
-      .subscribe((data: User[]) => (this.usersData = data))
+    this.userService.getUsersData().subscribe((data: UserResponse) => {
+      this.usersData = data.userList
+    })
   }
 }

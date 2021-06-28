@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { PrinterData } from 'src/app/interfaces/printerData'
+import {
+  PrinterData,
+  PrinterListResponse,
+} from 'src/app/interfaces/printerData'
 import { PrinterService } from 'src/app/services/printer.service'
 
 @Component({
@@ -20,6 +23,9 @@ export class PrintTableComponent implements OnInit {
   loadPrinterData(): void {
     this.printerService
       .getPrintersData()
-      .subscribe((data: PrinterData[]) => (this.printerData = data))
+      .subscribe((data: PrinterListResponse) => {
+        console.log(data.printerList)
+        this.printerData = data.printerList
+      })
   }
 }
