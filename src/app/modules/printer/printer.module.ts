@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'
 
 import { PrinterRoutingModule } from './printer-routing.module'
 import { PrinterComponent } from './printer.component'
-import { SharedModule } from 'src/app/shared/components/shared.module'
+import { SharedModule } from 'src/app/shared/shared.module'
 
 @NgModule({
   declarations: [PrinterComponent],

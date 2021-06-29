@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { UserTableComponent } from './user-table/user-table.component'
-import { JobsTableComponent } from './jobs-table/jobs-table.component'
-import { PrintTableComponent } from './print-table/print-table.component'
-import { MaterialModule } from '../material.module'
+import { UserTableComponent } from './components/user-table/user-table.component'
+import { JobsTableComponent } from './components/jobs-table/jobs-table.component'
+import { PrintTableComponent } from './components/print-table/print-table.component'
+import { MaterialModule } from './material.module'
 
 @NgModule({
   imports: [CommonModule, MaterialModule],
