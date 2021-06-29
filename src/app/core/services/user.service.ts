@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
-import { DashboardDataResponse, UserResponse } from '../interfaces/user'
+import {
+  DashboardDataResponse,
+  UserResponse,
+} from '../../shared/interfaces/user'
 import { environment } from 'src/environments/environment'
 import { HttpClient } from '@angular/common/http'
 

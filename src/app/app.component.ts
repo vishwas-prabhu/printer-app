@@ -7,11 +7,11 @@ import { Component } from '@angular/core'
 })
 export class AppComponent {
   title = 'printer-app'
-  show = false
+  showDropdown = false
 
   constructor() {}
 
-  toggleMenu(): void {
-    this.show = !this.show
+  toggleDropdown(): void {
+    this.showDropdown = !this.showDropdown
   }
 }

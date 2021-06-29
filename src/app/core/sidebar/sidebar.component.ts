@@ -8,11 +8,12 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core'
 export class SidebarComponent implements OnInit {
   @Input() showSideBar!: boolean
   @Output() closeSideBar = new EventEmitter<any>()
+
   constructor() {}
 
-  ngOnInit(): void {}
-
-  close(): void {
+  closeMenu(): void {
     this.closeSideBar.emit()
   }
+
+  ngOnInit(): void {}
 }

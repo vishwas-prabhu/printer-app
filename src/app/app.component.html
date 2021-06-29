@@ -1,12 +1,12 @@
 <div class="app">
-  <div class="app__sidebar" [class.show-sidebar]="show">
+  <div class="app__sidebar" [class.show-sidebar]="showDropdown">
     <app-sidebar
-      [showSideBar]="show"
-      (closeSideBar)="toggleMenu()"
+      [showSideBar]="showDropdown"
+      (closeSideBar)="toggleDropdown()"
     ></app-sidebar>
   </div>
   <div class="app__body">
-    <app-header (openSideBar)="toggleMenu()"></app-header>
+    <app-header (openSideBar)="toggleDropdown()"></app-header>
     <div class="container-fluid">
       <router-outlet></router-outlet>
     </div>

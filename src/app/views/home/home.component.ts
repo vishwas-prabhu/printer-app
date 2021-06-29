@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { DashboardDataResponse } from 'src/app/interfaces/user'
-import { UserService } from 'src/app/services/user.service'
+import { DashboardDataResponse } from 'src/app/shared/interfaces/user'
+import { UserService } from 'src/app/core/services/user.service'
 
 @Component({
   selector: 'app-home',
@@ -17,19 +17,19 @@ export class HomeComponent implements OnInit {
 
   constructor(private userService: UserService) {}
 
-  ngOnInit(): void {
-    this.updateDashboardData()
-  }
-
   updateDashboardData(): void {
     this.userService
       .getDashboardData()
       .subscribe((response: DashboardDataResponse) => {
-        const data = response.kpiData
-        this.dashboardData[0].number = data.totalUsers
-        this.dashboardData[1].number = data.totalPrinters
-        this.dashboardData[2].number = data.totalJobs
-        this.dashboardData[3].number = data.totalIssues
+        const { kpiData } = response
+        this.dashboardData[0].number = kpiData.totalUsers
+        this.dashboardData[1].number = kpiData.totalPrinters
+        this.dashboardData[2].number = kpiData.totalJobs
+        this.dashboardData[3].number = kpiData.totalIssues
       })
+  }
+
+  ngOnInit(): void {
+    this.updateDashboardData()
   }
 }

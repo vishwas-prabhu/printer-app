@@ -1,7 +1,7 @@
-import { Host, NgModule } from '@angular/core'
+import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { HomeComponent } from './components/home/home.component'
-import { PrinterComponent } from './components/printer/printer.component'
+import { HomeComponent } from './views/home/home.component'
+import { PrinterComponent } from './views/printer/printer.component'
 
 const routes: Routes = [
   {

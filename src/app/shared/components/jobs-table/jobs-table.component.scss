@@ -1,21 +1,22 @@
-@import 'src/mixins';
+@import 'src/assets/scss/mixins';
+@import 'src/assets/scss/variables';
 
 @include table-styles();
 
 .content__tableBody {
   p {
     padding: 1rem 10px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid $color-light-gray;
     margin: 0;
     font-weight: 600;
 
     span {
-      color: #5e9c20;
+      color: $color-light-green;
     }
 
     a {
       text-decoration: none;
-      color: #3086a3;
+      color: $color-light-blue;
     }
   }
 }

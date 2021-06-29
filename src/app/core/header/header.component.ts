@@ -7,20 +7,15 @@ import { Router, Event, NavigationStart } from '@angular/router'
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  showDropdown!: string
   notifications!: string[]
   pageName!: string
+  showDropdown!: string
   @Output() openSideBar = new EventEmitter<any>()
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    this.loadNotifications()
-    this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart) {
-        this.pageName = event.url.slice(1)
-      }
-    })
+  loadNotifications(): void {
+    this.notifications = ['Printer Down', 'Notifications blocked']
   }
 
   openDropdown(menuType: string): void {
@@ -31,11 +26,16 @@ export class HeaderComponent implements OnInit {
     this.showDropdown = menuType
   }
 
-  loadNotifications(): void {
-    this.notifications = ['Printer Down', 'Notifications blocked']
-  }
-
   openMenu(): void {
     this.openSideBar.emit()
+  }
+
+  ngOnInit(): void {
+    this.loadNotifications()
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        this.pageName = event.url.slice(1)
+      }
+    })
   }
 }

@@ -1,5 +1,5 @@
 <div class="header">
-  <div class="header__inf">
+  <div class="header__left">
     <mat-icon (click)="openMenu()">menu</mat-icon>
     <div class="header__info">
       <p class="header_infoTitle">Dashboard</p>
@@ -9,7 +9,7 @@
   <div class="header__right">
     <div class="header__rightOption" (click)="openDropdown('notifications')">
       <mat-icon class="header__rightIcon">notifications_none</mat-icon>
-      <div *ngIf="showDropdown === 'notifications'" class="tool-tip">
+      <div *ngIf="showDropdown === 'notifications'" class="drop-down">
         <span class="arrow"></span>
         <p class="title">Notifications</p>
         <ul>
@@ -28,7 +28,7 @@
         (click)="openDropdown('profile')"
         alt=""
       />
-      <div *ngIf="showDropdown === 'profile'" class="tool-tip">
+      <div *ngIf="showDropdown === 'profile'" class="drop-down">
         <span class="arrow"></span>
         <p class="title">Joe Newman</p>
         <ul (click)="showDropdown = ''">

@@ -1,13 +1,15 @@
+@import 'src/assets/scss/variables';
+
 .header {
-  background: white;
+  background: $color-white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
   height: 62px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid $color-light-gray;
 
-  &__inf {
+  &__left {
     display: flex;
     align-items: center;
     mat-icon {
@@ -43,13 +45,13 @@
       height: 45px;
       cursor: pointer;
 
-      .tool-tip {
+      .drop-down {
         position: absolute;
         right: 0px;
         top: 3.2rem;
-        background: #ececec;
+        background: $color-white-bg-light;
         z-index: 11;
-        border: 1px solid lightgray;
+        border: 1px solid $color-light-gray;
         border-radius: 4px;
         width: max-content;
         max-width: 200px;
@@ -71,7 +73,7 @@
           padding: 0.5rem 2rem;
           text-align: center;
           margin: 0;
-          border-bottom: 1px solid lightgray;
+          border-bottom: 1px solid $color-light-gray;
           font-weight: 600;
           cursor: default;
         }
@@ -87,14 +89,14 @@
             font-weight: 600;
             cursor: default;
             &:hover {
-              background-color: #e4e4e4;
+              background-color: $color-white-bg-dark;
             }
           }
         }
 
         .logout {
           padding: 0.5rem 1rem;
-          border-top: 1px solid lightgray;
+          border-top: 1px solid $color-light-gray;
           border-bottom: none;
           text-align: left;
         }
@@ -112,7 +114,7 @@
 
 @media screen and (max-width: 600px) {
   .header {
-    .header__inf {
+    .header__left {
       mat-icon {
         display: block;
       }

@@ -1,4 +1,4 @@
-<div class="sidebar" (click)="close()">
+<div class="sidebar" (click)="closeMenu()">
   <a routerLink="/home" class="active">
     <mat-icon class="sidebar__icon">sync_alt</mat-icon>
   </a>
@@ -9,4 +9,4 @@
     <mat-icon class="sidebar__icon">grid_on</mat-icon>
   </a>
 </div>
-<div *ngIf="showSideBar" (click)="close()" class="overlay"></div>
+<div *ngIf="showSideBar" (click)="closeMenu()" class="overlay"></div>

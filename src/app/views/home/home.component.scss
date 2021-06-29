@@ -1,7 +1,9 @@
+@import 'src/assets/scss/variables';
+
 .home {
   padding-top: 15px;
   .home__card {
-    background: white;
+    background: $color-white;
     width: 100%;
     border-radius: 5px;
     padding: 1rem;
@@ -12,14 +14,12 @@
     .home__cardIcon {
       width: 50px;
       height: 50px;
-      background: #399939;
-      background-color: #f4a460;
       display: grid;
       place-items: center;
       border-radius: 50%;
 
       mat-icon {
-        color: white;
+        color: $color-white;
         transform: scale(1.1);
       }
     }

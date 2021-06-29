@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core'
 import {
   PrinterData,
   PrinterListResponse,
-} from 'src/app/interfaces/printerData'
-import { PrinterService } from 'src/app/services/printer.service'
+} from 'src/app/shared/interfaces/printer-data'
+import { PrinterService } from 'src/app/core/services/printer.service'
 
 @Component({
   selector: 'app-print-table',
@@ -17,20 +17,6 @@ export class PrintTableComponent implements OnInit {
   totalPages: number[] = []
 
   constructor(private printerService: PrinterService) {}
-
-  ngOnInit(): void {
-    this.loadPrinterData(1)
-  }
-
-  populateTotalPages(totalPages: number): void {
-    if (totalPages === this.totalPages.length) {
-      return
-    }
-    this.totalPages.splice(0)
-    for (let num = 1; num <= totalPages; num++) {
-      this.totalPages.push(num)
-    }
-  }
 
   loadPrinterData(pageNo: number): void {
     if (this.paginate && pageNo !== this.pageNo) {
@@ -49,5 +35,19 @@ export class PrintTableComponent implements OnInit {
           this.printerData = data.printerList
         })
     }
+  }
+
+  populateTotalPages(totalPages: number): void {
+    if (totalPages === this.totalPages.length) {
+      return
+    }
+    this.totalPages.splice(0)
+    for (let num = 1; num <= totalPages; num++) {
+      this.totalPages.push(num)
+    }
+  }
+
+  ngOnInit(): void {
+    this.loadPrinterData(1)
   }
 }

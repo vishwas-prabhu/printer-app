@@ -1,12 +1,14 @@
+@import 'src/assets/scss/variables';
+
 .app {
   width: 100vw;
   height: 100vh;
-  background: #f0f0f0;
+  background: $color-white-background;
   display: flex;
 
   &__sidebar {
     width: auto;
-    background-color: #343038;
+    background-color: $color-violet;
   }
 
   &__body {
