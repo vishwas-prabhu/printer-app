@@ -4,6 +4,7 @@ import {
   PrinterListResponse,
 } from 'src/app/shared/interfaces/printer-data'
 import { PrinterService } from 'src/app/core/services/printer.service'
+import { SortService } from 'src/app/core/services/sort.service'
 
 @Component({
   selector: 'app-print-table',
@@ -15,8 +16,12 @@ export class PrintTableComponent implements OnInit {
   printerData: PrinterData[] = []
   pageNo!: number
   totalPages: number[] = []
+  sortingColumn!: string
 
-  constructor(private printerService: PrinterService) {}
+  constructor(
+    private printerService: PrinterService,
+    private sortService: SortService
+  ) {}
 
   loadPrinterData(pageNo: number): void {
     if (this.paginate && pageNo !== this.pageNo) {
@@ -45,6 +50,22 @@ export class PrintTableComponent implements OnInit {
     for (let num = 1; num <= totalPages; num++) {
       this.totalPages.push(num)
     }
+  }
+
+  sort(key: string): void {
+    let reverse = false
+    if (this.sortingColumn === key) {
+      reverse = true
+      this.sortingColumn = ''
+    } else {
+      this.sortingColumn = key
+    }
+
+    this.printerData = this.sortService.sortData<PrinterData>(
+      this.printerData,
+      key,
+      reverse
+    )
   }
 
   ngOnInit(): void {

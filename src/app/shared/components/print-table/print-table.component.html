@@ -7,8 +7,14 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Printer Name</th>
-          <th scope="col">Printer IP</th>
+          <th scope="col">
+            Printer Name
+            <span (click)="sort('id')"><mat-icon>unfold_more</mat-icon></span>
+          </th>
+          <th scope="col">
+            Printer IP
+            <span (click)="sort('name')"><mat-icon>unfold_more</mat-icon></span>
+          </th>
           <th scope="col">Status</th>
         </tr>
       </thead>

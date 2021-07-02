@@ -13,13 +13,26 @@
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">Username</th>
-          <th scope="col">Role</th>
-          <th scope="col">Account</th>
+          <th scope="col">
+            Username
+            <span (click)="sort('userName')"
+              ><mat-icon>unfold_more</mat-icon></span
+            >
+          </th>
+          <th scope="col">
+            Role
+            <span (click)="sort('role')"><mat-icon>unfold_more</mat-icon></span>
+          </th>
+          <th scope="col">
+            Account
+            <span (click)="sort('account')"
+              ><mat-icon>unfold_more</mat-icon></span
+            >
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of usersData | async; let i = index">
+        <tr *ngFor="let user of userData; let i = index">
           <td>{{ i + 1 }}</td>
           <td>{{ user.userName }}</td>
           <td>{{ user.role }}</td>
