@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router'
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/printer',
+    redirectTo: '/home',
     pathMatch: 'full',
   },
   {
