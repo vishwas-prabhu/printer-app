@@ -23,6 +23,11 @@ export class PrintTableComponent implements OnInit {
     private sortService: SortService
   ) {}
 
+  /**
+   * This function will load the printer table data from the API
+   * @param pageNo request API based on the page number
+   * @returns void
+   */
   loadPrinterData(pageNo: number): void {
     if (this.paginate && pageNo !== this.pageNo) {
       this.pageNo = pageNo
@@ -42,6 +47,13 @@ export class PrintTableComponent implements OnInit {
     }
   }
 
+  /**
+   * Populates the totalPages array with sequential numbers
+   * @param totalPages total number of array element required in the array
+   * @returns void
+   * Function will populate array with numbers starting from 1 to totalPages
+   * Array will be of length totalPages
+   */
   populateTotalPages(totalPages: number): void {
     if (totalPages === this.totalPages.length) {
       return
@@ -52,6 +64,11 @@ export class PrintTableComponent implements OnInit {
     }
   }
 
+  /**
+   * Sorts the user table data based on user request
+   * @param key represents the column on which sorting should be done
+   * @return void
+   */
   sort(key: string): void {
     let reverse = false
     if (this.sortingColumn === key) {
@@ -68,6 +85,9 @@ export class PrintTableComponent implements OnInit {
     )
   }
 
+  /**
+   * Angular life hook - called when component is loaded
+   */
   ngOnInit(): void {
     this.loadPrinterData(1)
   }

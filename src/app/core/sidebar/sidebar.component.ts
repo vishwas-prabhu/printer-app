@@ -11,9 +11,15 @@ export class SidebarComponent implements OnInit {
 
   constructor() {}
 
+  /**
+   * This function will emit the closeSidebar event in parent component
+   */
   closeMenu(): void {
     this.closeSideBar.emit()
   }
 
+  /**
+   * Angular life hook - called when component is loaded
+   */
   ngOnInit(): void {}
 }

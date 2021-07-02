@@ -7,11 +7,16 @@ import { Component } from '@angular/core'
 })
 export class AppComponent {
   title = 'printer-app'
-  showDropdown = false
+  showSidebar = false
 
   constructor() {}
 
-  toggleDropdown(): void {
-    this.showDropdown = !this.showDropdown
+  /**
+   * Toggles the value of Sidebar variable value when invoked
+   * @params none
+   * @returns void
+   */
+  toggleSidebar(): void {
+    this.showSidebar = !this.showSidebar
   }
 }

@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing'
 import { Router, Routes } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing'
 import { AppComponent } from './app.component'
@@ -52,48 +57,42 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('printer-app')
   })
 
-  it('should have showDropdown value as false', () => {
-    expect(app.showDropdown).toBeFalsy()
+  it('should have showSidebar value as false', () => {
+    expect(app.showSidebar).toBeFalsy()
   })
 
   // tslint:disable-next-line: max-line-length
-  it('should toggle value of showDropdown when toggleDropdown is called', () => {
-    expect(app.showDropdown).toBe(false)
-    app.toggleDropdown()
+  it('should toggle value of showSidebar when toggleSidebar is called', () => {
+    expect(app.showSidebar).toBe(false)
+    app.toggleSidebar()
     fixture.detectChanges()
-    expect(app.showDropdown).toBe(true)
+    expect(app.showSidebar).toBe(true)
   })
 
-  it('should have show-sidebar class when showDropdown is true', () => {
+  it('should have show-sidebar class when showSidebar is true', () => {
     let sidebar = fixture.nativeElement.querySelector('.show-sidebar')
     expect(sidebar).toBeFalsy()
-    app.showDropdown = true
+    app.showSidebar = true
     fixture.detectChanges()
     sidebar = fixture.nativeElement.querySelector('.show-sidebar')
     expect(sidebar).toBeTruthy()
   })
 
-  it('redirects to /home path when current path is ""', async () => {
-    await router.navigate([''])
+  it('redirects to /home path when current path is ""', fakeAsync(() => {
+    router.navigate([''])
+    tick()
     expect(location.path()).toBe('/home')
-  })
+  }))
 
-  it('navigate to /home path when path is "home"', async () => {
-    await router.navigate(['/home'])
+  it('navigate to /home path when path is "home"', fakeAsync(() => {
+    router.navigate(['/home'])
+    tick()
     expect(location.path()).toBe('/home')
-  })
+  }))
 
-  it('navigate to /printer path', async () => {
-    await router.navigate(['/printer'])
+  it('navigate to /printer path', fakeAsync(() => {
+    router.navigate(['/printer'])
+    tick()
     expect(location.path()).toBe('/printer')
-  })
-
-  // it('should render title', () => {
-  //   const fixture = TestBed.createComponent(AppComponent)
-  //   fixture.detectChanges()
-  //   const compiled = fixture.nativeElement
-  //   expect(compiled.querySelector('.content span').textContent).toContain(
-  //     'printer-app app is running!'
-  //   )
-  // })
+  }))
 })

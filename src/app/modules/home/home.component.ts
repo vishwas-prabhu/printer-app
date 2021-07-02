@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private userService: UserService) {}
 
+  /**
+   * This function will load the dashboard data from the API
+   */
   updateDashboardData(): void {
     this.userService
       .getDashboardData()
@@ -30,6 +33,9 @@ export class HomeComponent implements OnInit {
       })
   }
 
+  /**
+   * Angular life hook - called when component is loaded
+   */
   ngOnInit(): void {
     this.updateDashboardData()
   }

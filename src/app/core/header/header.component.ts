@@ -14,10 +14,21 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) {}
 
+  /**
+   * This function will load the notifications from API
+   * And saves it in local variable
+   * Invoked when component is created
+   */
   loadNotifications(): void {
     this.notifications = ['Printer Down', 'Notifications blocked']
   }
 
+  /**
+   * Function will set the showDropdown variable value
+   * @param menuType type of menu to be displayed
+   * menuType value can be notifications or profile
+   * @returns void
+   */
   openDropdown(menuType: string): void {
     if (menuType === this.showDropdown) {
       this.showDropdown = ''
@@ -26,12 +37,17 @@ export class HeaderComponent implements OnInit {
     this.showDropdown = menuType
   }
 
+  /**
+   * Function will emit the openSidebar event in the parent component
+   */
   openMenu(): void {
     this.openSideBar.emit()
   }
 
   ngOnInit(): void {
     this.loadNotifications()
+
+    // Update the header with current route path
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.pageName = event.url.slice(1)

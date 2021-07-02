@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs'
+import { of, Subject } from 'rxjs'
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
 import { User, UserResponse } from 'src/app/shared/interfaces/user'
 import { UserService } from 'src/app/core/services/user.service'
@@ -22,6 +22,9 @@ export class UserTableComponent implements OnInit {
     private sortService: SortService
   ) {}
 
+  /**
+   * Load the user data from the API
+   */
   loadUserData(): void {
     this.userService.getUsersData().subscribe((data: UserResponse) => {
       this.allUsers = data.userList
@@ -29,10 +32,19 @@ export class UserTableComponent implements OnInit {
     })
   }
 
+  /**
+   * Clears the previous search key and updates with new key
+   * @param term key term for filtering the data
+   * Function used for updating the subject variable searchTerms
+   */
   search(term: string): void {
     this.searchTerms.next(term)
   }
 
+  /**
+   * Sorts the user table data based on user request
+   * @param key represents the column on which sorting should be done
+   */
   sort(key: string): void {
     let reverse = false
     if (this.sortingColumn === key) {
@@ -45,6 +57,9 @@ export class UserTableComponent implements OnInit {
     this.userData = this.sortService.sortData<User>(this.userData, key, reverse)
   }
 
+  /**
+   * Angular life hook - called when component is loaded
+   */
   ngOnInit(): void {
     this.loadUserData()
     this.searchTerms
