@@ -19,7 +19,9 @@ export class HomeComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   /**
-   * This function will load the dashboard data from the API
+   * Function will load the dashboard data from the API
+   * @param - none
+   * @returns void
    */
   updateDashboardData(): void {
     this.userService

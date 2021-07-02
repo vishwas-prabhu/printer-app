@@ -12,7 +12,8 @@ export class SidebarComponent implements OnInit {
   constructor() {}
 
   /**
-   * This function will emit the closeSidebar event in parent component
+   * Function will emit the closeSidebar event in parent component
+   * @emits closeSideBar event
    */
   closeMenu(): void {
     this.closeSideBar.emit()

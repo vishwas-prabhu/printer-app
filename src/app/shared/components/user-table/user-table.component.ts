@@ -35,6 +35,7 @@ export class UserTableComponent implements OnInit {
   /**
    * Clears the previous search key and updates with new key
    * @param term key term for filtering the data
+   *
    * Function used for updating the subject variable searchTerms
    */
   search(term: string): void {
@@ -42,7 +43,7 @@ export class UserTableComponent implements OnInit {
   }
 
   /**
-   * Sorts the user table data based on user request
+   * Sorts the user table data based on key
    * @param key represents the column on which sorting should be done
    */
   sort(key: string): void {

@@ -15,9 +15,8 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) {}
 
   /**
-   * This function will load the notifications from API
-   * And saves it in local variable
-   * Invoked when component is created
+   * Function will load the notifications from API
+   * and saves it in local variable
    */
   loadNotifications(): void {
     this.notifications = ['Printer Down', 'Notifications blocked']
@@ -25,8 +24,8 @@ export class HeaderComponent implements OnInit {
 
   /**
    * Function will set the showDropdown variable value
-   * @param menuType type of menu to be displayed
-   * menuType value can be notifications or profile
+   * @param menuType type of menu to be displayed,
+   * `menuType` value can be 'notifications' or 'profile'
    * @returns void
    */
   openDropdown(menuType: string): void {
@@ -38,7 +37,8 @@ export class HeaderComponent implements OnInit {
   }
 
   /**
-   * Function will emit the openSidebar event in the parent component
+   * Function will emit the openSideBar event in the parent component
+   * @emits openSideBar event
    */
   openMenu(): void {
     this.openSideBar.emit()

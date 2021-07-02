@@ -24,7 +24,7 @@ export class PrintTableComponent implements OnInit {
   ) {}
 
   /**
-   * This function will load the printer table data from the API
+   * Function will load the printer table data from the API
    * @param pageNo request API based on the page number
    * @returns void
    */
@@ -50,9 +50,11 @@ export class PrintTableComponent implements OnInit {
   /**
    * Populates the totalPages array with sequential numbers
    * @param totalPages total number of array element required in the array
-   * @returns void
+   *
    * Function will populate array with numbers starting from 1 to totalPages
    * Array will be of length totalPages
+   * @example
+   * populateTotalPages(4) returns array [1,2,3,4]
    */
   populateTotalPages(totalPages: number): void {
     if (totalPages === this.totalPages.length) {
@@ -65,7 +67,7 @@ export class PrintTableComponent implements OnInit {
   }
 
   /**
-   * Sorts the user table data based on user request
+   * Sorts the printer table data based on key
    * @param key represents the column on which sorting should be done
    * @return void
    */
