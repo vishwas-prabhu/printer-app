@@ -6,8 +6,26 @@ import {
   tick,
 } from '@angular/core/testing'
 import { MatIconModule } from '@angular/material/icon'
+import { Observable, of } from 'rxjs'
+import { UserService } from 'src/app/core/services/user.service'
+import { UserResponse } from '../../interfaces/user'
 
 import { UserTableComponent } from './user-table.component'
+
+const userServiceStub = {
+  getUsersData(): Observable<UserResponse> {
+    const userData = {
+      userList: [
+        {
+          userName: 'User 1',
+          role: 'Super Admin',
+          account: '6158976',
+        },
+      ],
+    }
+    return of(userData)
+  },
+}
 
 describe('UserTableComponent', () => {
   let component: UserTableComponent
@@ -17,6 +35,7 @@ describe('UserTableComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [UserTableComponent],
       imports: [HttpClientTestingModule, MatIconModule],
+      providers: [{ provide: UserService, useValue: userServiceStub }],
     }).compileComponents()
   })
 
@@ -31,13 +50,13 @@ describe('UserTableComponent', () => {
   })
 
   it('should invoke search function on input event', fakeAsync(() => {
-    spyOn(component, 'search')
+    spyOn(component.searchTerms, 'next')
     const input = fixture.debugElement.nativeElement.querySelector('input')
     fixture.detectChanges()
     input.dispatchEvent(new Event('input'))
     tick()
     fixture.detectChanges()
-    expect(component.search).toHaveBeenCalled()
+    expect(component.searchTerms.next).toHaveBeenCalled()
   }))
 
   it('should invoke sort function on click event', fakeAsync(() => {
@@ -49,11 +68,26 @@ describe('UserTableComponent', () => {
     expect(component.sort).toHaveBeenCalled()
   }))
 
-  // it('jksjj', fakeAsync(() => {
-  //   component.sortingColumn = 'userName'
-  //   tick()
-  //   component.sort('userName')
-  //   expect(component.sortingColumn).toEqual('')
-  //   expect(component.sortingColumn).not.toEqual('userName')
-  // }))
+  it('should load userData to allUsers array', () => {
+    expect(component.allUsers.length).toEqual(1)
+    const username = fixture.nativeElement.querySelectorAll('tr td')[1]
+    expect(username.textContent).toEqual('User 1')
+  })
+
+  // tslint:disable-next-line: max-line-length
+  it('should assign sortingColumn value as "" when previous value is assigned', fakeAsync(() => {
+    component.sortingColumn = 'userName'
+    tick()
+    component.sort('userName')
+    expect(component.sortingColumn).toEqual('')
+    expect(component.sortingColumn).not.toEqual('userName')
+  }))
+
+  it('should assign parameter value as sortingColumn value', fakeAsync(() => {
+    component.sortingColumn = 'userName'
+    tick()
+    component.sort('role')
+    expect(component.sortingColumn).toEqual('role')
+    expect(component.sortingColumn).not.toEqual('userName')
+  }))
 })
