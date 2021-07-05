@@ -5,6 +5,7 @@ import {
   TestBed,
   tick,
 } from '@angular/core/testing'
+import { MatIconModule } from '@angular/material/icon'
 
 import { UserTableComponent } from './user-table.component'
 
@@ -15,7 +16,7 @@ describe('UserTableComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [UserTableComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, MatIconModule],
     }).compileComponents()
   })
 

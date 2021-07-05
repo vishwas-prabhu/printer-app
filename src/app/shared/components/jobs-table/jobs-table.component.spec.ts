@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { MatIconModule } from '@angular/material/icon'
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { JobsTableComponent } from './jobs-table.component'
 
@@ -9,7 +10,7 @@ describe('JobsTableComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [JobsTableComponent],
-      imports: [MatTooltipModule],
+      imports: [MatTooltipModule, MatIconModule],
     }).compileComponents()
   })
 
