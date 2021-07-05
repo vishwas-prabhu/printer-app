@@ -23,4 +23,11 @@ describe('SidebarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy()
   })
+
+  it('should emit closeSidebar event when sidebar items are clicked', () => {
+    spyOn(component.closeSideBar, 'emit')
+    fixture.nativeElement.querySelector('.sidebar').click()
+    fixture.detectChanges()
+    expect(component.closeSideBar.emit).toHaveBeenCalled()
+  })
 })
