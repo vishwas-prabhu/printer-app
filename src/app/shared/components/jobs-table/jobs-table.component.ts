@@ -8,8 +8,5 @@ import { Component, OnInit } from '@angular/core'
 export class JobsTableComponent implements OnInit {
   constructor() {}
 
-  /**
-   * Angular life hook - called when component is loaded
-   */
   ngOnInit(): void {}
 }

@@ -19,8 +19,5 @@ export class SidebarComponent implements OnInit {
     this.closeSideBar.emit()
   }
 
-  /**
-   * Angular life hook - called when component is loaded
-   */
   ngOnInit(): void {}
 }

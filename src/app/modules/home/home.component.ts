@@ -35,9 +35,6 @@ export class HomeComponent implements OnInit {
       })
   }
 
-  /**
-   * Angular life hook - called when component is loaded
-   */
   ngOnInit(): void {
     this.updateDashboardData()
   }

@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.loadNotifications()
 
-    // Update the header with current route path
+    // Subscribe to router event and update the header with current route path
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.pageName = event.url.slice(1)

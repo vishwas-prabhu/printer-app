@@ -87,9 +87,6 @@ export class PrintTableComponent implements OnInit {
     )
   }
 
-  /**
-   * Angular life hook - called when component is loaded
-   */
   ngOnInit(): void {
     this.loadPrinterData(1)
   }

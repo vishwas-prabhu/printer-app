@@ -15,7 +15,7 @@ export class UserTableComponent implements OnInit {
   userData!: User[]
   sortingColumn!: string
 
-  private searchTerms = new Subject<string>()
+  searchTerms = new Subject<string>()
 
   constructor(
     private userService: UserService,
@@ -58,11 +58,10 @@ export class UserTableComponent implements OnInit {
     this.userData = this.sortService.sortData<User>(this.userData, key, reverse)
   }
 
-  /**
-   * Angular life hook - called when component is loaded
-   */
   ngOnInit(): void {
     this.loadUserData()
+
+    // Subscribe to the subject variable
     this.searchTerms
       .pipe(
         debounceTime(300),
