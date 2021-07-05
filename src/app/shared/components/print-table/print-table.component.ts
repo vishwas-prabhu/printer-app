@@ -14,9 +14,11 @@ import { SortService } from 'src/app/core/services/sort.service'
 export class PrintTableComponent implements OnInit {
   @Input() paginate!: boolean
   printerData: PrinterData[] = []
+  allData: PrinterData[] = []
   pageNo!: number
   totalPages: number[] = []
   sortingColumn!: string
+  pageOffset = 4
 
   constructor(
     private printerService: PrinterService,
@@ -25,26 +27,28 @@ export class PrintTableComponent implements OnInit {
 
   /**
    * Function will load the printer table data from the API
-   * @param pageNo request API based on the page number
    * @returns void
    */
-  loadPrinterData(pageNo: number): void {
-    if (this.paginate && pageNo !== this.pageNo) {
-      this.pageNo = pageNo
-      this.printerData = []
-      this.printerService
-        .getPrintersDataByPage(pageNo)
-        .subscribe((data: PrinterListResponse) => {
-          this.printerData = data.printerList
-          this.populateTotalPages(data.totalPages)
-        })
-    } else if (!this.paginate) {
-      this.printerService
-        .getPrintersData()
-        .subscribe((data: PrinterListResponse) => {
-          this.printerData = data.printerList
-        })
-    }
+  loadPrinterData(): void {
+    this.printerService
+      .getPrintersData()
+      .subscribe((data: PrinterListResponse) => {
+        this.printerData = data.printerList
+        this.allData = this.printerData
+        this.paginateAllPrintersData()
+      })
+  }
+
+  /**
+   * Function used to filter the data from all printers data
+   * @param pageNo page to be displayed in the table
+   */
+  loadFilteredData(pageNo: number): void {
+    this.pageNo = pageNo
+    this.printerData = this.allData.slice(
+      (pageNo - 1) * this.pageOffset,
+      pageNo * this.pageOffset
+    )
   }
 
   /**
@@ -64,6 +68,33 @@ export class PrintTableComponent implements OnInit {
     for (let num = 1; num <= totalPages; num++) {
       this.totalPages.push(num)
     }
+  }
+
+  /**
+   * Sets pagination for all the printer data available
+   */
+  paginateAllPrintersData(): void {
+    if (this.paginate) {
+      this.printerData = []
+
+      // Set the totalPages array with given offset
+      this.populateTotalPages(
+        this.allData.length % this.pageOffset
+          ? Math.floor(this.allData.length / this.pageOffset) + 1
+          : this.allData.length / this.pageOffset
+      )
+      this.loadFilteredData(1)
+    }
+  }
+
+  /**
+   * Function sets the offset for pagination
+   * @param offset number of results (rows) to be displayed per page
+   * @returns void
+   */
+  setOffsetValue(offset: any): void {
+    this.pageOffset = offset.target.value
+    this.paginateAllPrintersData()
   }
 
   /**
@@ -88,6 +119,6 @@ export class PrintTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadPrinterData(1)
+    this.loadPrinterData()
   }
 }
