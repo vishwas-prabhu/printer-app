@@ -80,7 +80,7 @@ describe('PrintTableComponent', () => {
 
   it('should load data from API to printerData array', () => {
     component.paginate = false
-    component.loadPrinterData(1)
+    component.loadPrinterData()
     fixture.detectChanges()
     expect(component.printerData.length).toEqual(1)
     expect(fixture.nativeElement.querySelector('tr td').textContent).toEqual(
@@ -92,7 +92,7 @@ describe('PrintTableComponent', () => {
   it('should load data from API to printerData array when paginate is true', () => {
     component.paginate = true
     component.pageNo = 0
-    component.loadPrinterData(1)
+    component.loadPrinterData()
     fixture.detectChanges()
     expect(component.printerData.length).toEqual(1)
     expect(fixture.nativeElement.querySelector('tr td').textContent).toEqual(
