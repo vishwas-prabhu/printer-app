@@ -13,7 +13,7 @@ import { SortService } from 'src/app/core/services/sort.service'
 export class UserTableComponent implements OnInit {
   allUsers: User[] = []
   userData!: User[]
-  sortingColumn!: string
+  sortedColumn!: string
 
   searchTerms = new Subject<string>()
 
@@ -47,15 +47,12 @@ export class UserTableComponent implements OnInit {
    * @param key represents the column on which sorting should be done
    */
   sort(key: string): void {
-    let reverse = false
-    if (this.sortingColumn === key) {
-      reverse = true
-      this.sortingColumn = ''
-    } else {
-      this.sortingColumn = key
-    }
-
-    this.userData = this.sortService.sortData<User>(this.userData, key, reverse)
+    // tslint:disable-next-line: whitespace
+    ;[this.userData, this.sortedColumn] = this.sortService.sortData<User>(
+      this.userData,
+      key,
+      this.sortedColumn
+    )
   }
 
   ngOnInit(): void {

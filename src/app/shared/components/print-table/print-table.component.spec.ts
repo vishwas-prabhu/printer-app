@@ -50,19 +50,20 @@ describe('PrintTableComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  it('should set sortingColumn to "" when same value is assigned to sortingColumn', () => {
-    component.sortingColumn = 'id'
+  // tslint:disable-next-line: max-line-length
+  it('should set sortedColumn to "" when same value is assigned to sortedColumn', () => {
+    component.sortedColumn = 'id'
     component.sort('id')
-    expect(component.sortingColumn).toEqual('')
-    expect(component.sortingColumn).not.toEqual('id')
+    expect(component.sortedColumn).toEqual('')
+    expect(component.sortedColumn).not.toEqual('id')
   })
 
   // tslint:disable-next-line: max-line-length
-  it('should replace sortingColumn value with new value when sort is invoked', () => {
-    component.sortingColumn = 'id'
+  it('should replace sortedColumn value with new value when sort is invoked', () => {
+    component.sortedColumn = 'id'
     component.sort('name')
-    expect(component.sortingColumn).toEqual('name')
-    expect(component.sortingColumn).not.toEqual('')
+    expect(component.sortedColumn).toEqual('name')
+    expect(component.sortedColumn).not.toEqual('')
   })
 
   it('should update totalPages array based on the parameter value', () => {
