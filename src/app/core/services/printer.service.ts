@@ -14,7 +14,7 @@ import {
 export class PrinterService {
   pageNumber = 0
   totalPages = 1
-  isDataLoading = true
+  isDataLoading = false
 
   constructor(private http: HttpClient) {}
 
