@@ -10,11 +10,11 @@ import { MatDialog } from '@angular/material/dialog'
 import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component'
 
 @Component({
-  selector: 'app-home-header',
-  templateUrl: './home-header.component.html',
-  styleUrls: ['./home-header.component.scss'],
+  selector: 'app-shop-header',
+  templateUrl: './shop-header.component.html',
+  styleUrls: ['./shop-header.component.scss'],
 })
-export class HomeHeaderComponent implements OnInit {
+export class ShopHeaderComponent implements OnInit {
   @Output() updateColumn = new EventEmitter<object>()
 
   selectedTableColumns = {

@@ -16,11 +16,11 @@ import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog
 import { PrinterTableData } from 'src/app/shared/interfaces/printer-data'
 
 @Component({
-  selector: 'app-print-table',
-  templateUrl: './print-table.component.html',
-  styleUrls: ['./print-table.component.scss'],
+  selector: 'app-shop-table',
+  templateUrl: './shop-table.component.html',
+  styleUrls: ['./shop-table.component.scss'],
 })
-export class PrintTableComponent implements OnInit, AfterViewInit {
+export class ShopTableComponent implements OnInit, AfterViewInit {
   @Input() dataSource: any
   @Input() columnsToDisplay!: string[]
   @Output() loadNextPage = new EventEmitter<any>()
