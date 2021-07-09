@@ -4,6 +4,7 @@ import {
   TestBed,
   tick,
 } from '@angular/core/testing'
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 import { MatIconModule } from '@angular/material/icon'
 import { Router, Routes } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing'
@@ -25,7 +26,11 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [RouterTestingModule.withRoutes(routes), MatIconModule],
+      imports: [
+        RouterTestingModule.withRoutes(routes),
+        MatIconModule,
+        MatDialogModule,
+      ],
     }).compileComponents()
     router = TestBed.inject(Router)
   })
