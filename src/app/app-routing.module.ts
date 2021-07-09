@@ -17,6 +17,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/printer/printer.module').then(m => m.PrinterModule),
   },
+  {
+    path: 'shop',
+    loadChildren: () =>
+      import('./modules/shop/shop.module').then(m => m.ShopModule),
+  },
 ]
 
 @NgModule({

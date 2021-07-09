@@ -1,0 +1,10 @@
+<div class="shop">
+  <app-home-header
+    (updateColumn)="updateDisplayColumns($event)"
+  ></app-home-header>
+  <app-print-table
+    [dataSource]="dataSource"
+    [columnsToDisplay]="columnsToDisplay"
+    (loadNextPage)="loadTableData()"
+  ></app-print-table>
+</div>

@@ -8,9 +8,15 @@ import { SidebarComponent } from './core/sidebar/sidebar.component'
 import { HeaderComponent } from './core/header/header.component'
 import { HttpClientModule } from '@angular/common/http'
 import { MaterialModule } from './shared/material.module'
+import { CartDialogComponent } from './core/cart-dialog/cart-dialog.component'
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    SidebarComponent,
+    HeaderComponent,
+    CartDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

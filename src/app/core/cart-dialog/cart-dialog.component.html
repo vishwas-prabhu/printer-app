@@ -1,0 +1,21 @@
+<div class="title" mat-dialog-title>
+  <h1>Your Cart</h1>
+  <mat-icon mat-dialog-close>close</mat-icon>
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-content class="content">
+  <ng-container *ngFor="let item of cartData">
+    <div class="card">
+      <img src="assets/logo.jpg" alt="" />
+      <div class="card-data">
+        <div class="card-title">
+          <p>{{ item.name }}</p>
+          <mat-icon (click)="openDialog(item)">delete</mat-icon>
+        </div>
+        <p class="card-subtitle">Quantity: 1</p>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </ng-container>
+  <p *ngIf="!cartData.length">No Items in Cart!</p>
+</div>

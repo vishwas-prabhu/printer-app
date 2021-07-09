@@ -1,13 +1,21 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs'
+import { Observable, of } from 'rxjs'
+import { tap } from 'rxjs/operators'
 import { environment } from 'src/environments/environment'
-import { PrinterListResponse } from '../../shared/interfaces/printer-data'
+import {
+  PrinterDataResponse,
+  PrinterListResponse,
+} from '../../shared/interfaces/printer-data'
 
 @Injectable({
   providedIn: 'root',
 })
 export class PrinterService {
+  pageNumber = 0
+  totalPages = 1
+  isDataLoading = false
+
   constructor(private http: HttpClient) {}
 
   /**
@@ -33,5 +41,27 @@ export class PrinterService {
     return this.http.get<PrinterListResponse>(
       `${environment.baseUrl}printerList/${pageNo}`
     )
+  }
+
+  /**
+   * Requests the printer table data from the API
+   * @returns response from the API
+   */
+  getPrinterData(): Observable<PrinterDataResponse> {
+    if (!this.isDataLoading && this.pageNumber < this.totalPages) {
+      this.isDataLoading = true
+      return this.http
+        .get<PrinterDataResponse>(
+          `${environment.baseUrl}printerData/${++this.pageNumber}`
+        )
+        .pipe(
+          tap(data => {
+            this.pageNumber = data.pageNumber
+            this.totalPages = data.totalPages
+            this.isDataLoading = false
+          })
+        )
+    }
+    return of({ printerList: [], totalPages: 0, pageNumber: 0 })
   }
 }

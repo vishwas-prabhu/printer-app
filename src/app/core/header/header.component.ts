@@ -1,5 +1,14 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core'
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+} from '@angular/core'
+import { MatDialog } from '@angular/material/dialog'
 import { Router, Event, NavigationStart } from '@angular/router'
+import { CartDialogComponent } from '../cart-dialog/cart-dialog.component'
 
 @Component({
   selector: 'app-header',
@@ -12,7 +21,9 @@ export class HeaderComponent implements OnInit {
   showDropdown!: string
   @Output() openSideBar = new EventEmitter<any>()
 
-  constructor(private router: Router) {}
+  @ViewChild('cartButton') public cartButton!: ElementRef
+
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   /**
    * Function will load the notifications from API
@@ -42,6 +53,18 @@ export class HeaderComponent implements OnInit {
    */
   openMenu(): void {
     this.openSideBar.emit()
+  }
+
+  /**
+   * Opens cart dialog and displays the cart items
+   */
+  openDialog(): void {
+    this.dialog.open(CartDialogComponent, {
+      width: `400px`,
+      data: {
+        positionRelativeToElement: this.cartButton,
+      },
+    })
   }
 
   ngOnInit(): void {

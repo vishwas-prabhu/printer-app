@@ -22,6 +22,9 @@
         </ul>
       </div>
     </div>
+    <div #cartButton class="header__rightOption" (click)="openDialog()">
+      <mat-icon class="header__rightIcon">shopping_bag</mat-icon>
+    </div>
     <div class="header__rightOption">
       <img
         src="https://avatars.dicebear.com/api/human/header.svg"
@@ -33,7 +36,7 @@
         <p class="title">Joe Newman</p>
         <ul (click)="showDropdown = ''">
           <li routerLink="/home">Profile</li>
-          <li routerLink="/home">Jobs</li>
+          <li routerLink="/shop">Shop</li>
           <li routerLink="/printer">My Printers</li>
         </ul>
         <p class="title logout">Logout</p>

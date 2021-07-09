@@ -1,0 +1,53 @@
+<div appScroll (loadNextPage)="loadNextPage.emit()" class="table">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="substrate_name">
+      <th mat-header-cell *matHeaderCellDef>Substrate Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.substrate_name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="source">
+      <th mat-header-cell *matHeaderCellDef>Source</th>
+      <td mat-cell *matCellDef="let element">
+        <img src="assets/logo.jpg" alt="" />
+        {{ element.source }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date_modified">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Modified</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.date_modified | date: "dd/MM/yyyy HH:mm" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="installed_in">
+      <th mat-header-cell *matHeaderCellDef>Installed In</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon>{{ element.installed_in ? "done" : "close" }}</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="manufacturer">
+      <th mat-header-cell *matHeaderCellDef>Manufacturer</th>
+      <td mat-cell *matCellDef="let element">{{ element.manufacturer }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="model_supported">
+      <th mat-header-cell *matHeaderCellDef>Model Supported</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.model_supported }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="added_to_cart">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element" (click)="addToCart(element)">
+        <mat-icon>shopping_cart</mat-icon>
+        <span [matBadge]="getSign(element.id)" matBadgeOverlap="false"></span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+  </table>
+</div>
