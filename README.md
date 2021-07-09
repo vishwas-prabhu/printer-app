@@ -4,6 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Folder Structure
 
+```
 Printer-app
 └── src
 ├── app
@@ -32,6 +33,7 @@ Printer-app
 ├── assets
 │   └── scss
 └── environments
+```
 
 ## Development server
 
