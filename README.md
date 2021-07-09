@@ -18,11 +18,11 @@ Printer-app
     │   │   ├── home
     │   │   ├── printer
     │   │   └── shop
-    │   │   ├── components
-    │   │   │   ├── filter-dialog
-    │   │   │   ├── shop-header
-    │   │   │   └── shop-table
-    │   │   └── directives
+    │   │       ├── components
+    │   │       │   ├── filter-dialog
+    │   │       │   ├── shop-header
+    │   │       │   └── shop-table
+    │   │       └── directives
     │   └── shared
     │   ├── components
     │   │   ├── confirm-dialog
