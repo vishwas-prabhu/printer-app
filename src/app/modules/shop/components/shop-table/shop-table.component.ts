@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   Input,
   OnInit,
@@ -19,12 +18,12 @@ import { ShopTableData } from 'src/app/shared/interfaces/shop-data'
   templateUrl: './shop-table.component.html',
   styleUrls: ['./shop-table.component.scss'],
 })
-export class ShopTableComponent implements OnInit, AfterViewInit {
+export class ShopTableComponent implements OnInit {
   @Input() dataSource: any
   @Input() columnsToDisplay!: string[]
   @Output() loadNextPage = new EventEmitter<any>()
 
-  @ViewChild(MatSort) sort!: MatSort
+  @ViewChild(MatSort, { static: true }) sort!: MatSort
 
   constructor(
     private snackbar: MatSnackBar,
@@ -99,9 +98,7 @@ export class ShopTableComponent implements OnInit, AfterViewInit {
     })
   }
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.dataSource.sort = this.sort
   }
 }

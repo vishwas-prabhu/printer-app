@@ -8,6 +8,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 import { CartDialogComponent } from './cart-dialog.component'
 
+const getBoundingClientRectData = {
+  bottom: 0,
+  top: 0,
+}
+
 describe('CartDialogComponent', () => {
   let component: CartDialogComponent
   let fixture: ComponentFixture<CartDialogComponent>
@@ -17,8 +22,22 @@ describe('CartDialogComponent', () => {
       declarations: [CartDialogComponent],
       imports: [MatSnackBarModule, MatDialogModule],
       providers: [
-        { provide: MatDialogRef, useValue: {} },
-        { provide: MAT_DIALOG_DATA, useValue: {} },
+        {
+          provide: MatDialogRef,
+          useValue: {
+            updatePosition: () => {},
+          },
+        },
+        {
+          provide: MAT_DIALOG_DATA,
+          useValue: {
+            positionRelativeToElement: {
+              nativeElement: {
+                getBoundingClientRect: () => getBoundingClientRectData,
+              },
+            },
+          },
+        },
       ],
     }).compileComponents()
   })
