@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { CartItem } from 'src/app/shared/interfaces/cart-item'
-import { PrinterTableData } from 'src/app/shared/interfaces/printer-data'
+import { ShopTableData } from 'src/app/shared/interfaces/shop-data'
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +23,7 @@ export class CartService {
    * Adds item to the cart
    * @param data item to be added to the cart
    */
-  addItemToCart(data: PrinterTableData): void {
+  addItemToCart(data: ShopTableData): void {
     this.cartItems.push({ name: data.substrate_name, id: data.id })
   }
 

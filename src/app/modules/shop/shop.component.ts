@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { MatTableDataSource } from '@angular/material/table'
 import { PrinterService } from 'src/app/core/services/printer.service'
-import { PrinterDataResponse } from 'src/app/shared/interfaces/printer-data'
+import { ShopDataResponse } from 'src/app/shared/interfaces/shop-data'
 
 @Component({
   selector: 'app-shop',
@@ -27,16 +27,16 @@ export class ShopComponent implements OnInit {
   }
 
   /**
-   * Loads the printer table data from API
+   * Loads the shop table data from API
    */
   loadTableData(): void {
     this.printerService
-      .getPrinterData()
+      .getProductsData()
       .subscribe(
-        (data: PrinterDataResponse) =>
+        (data: ShopDataResponse) =>
           (this.dataSource.data = [
             ...this.dataSource.data,
-            ...data.printerList,
+            ...data.productList,
           ])
       )
   }

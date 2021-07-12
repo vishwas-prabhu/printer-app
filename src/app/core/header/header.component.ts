@@ -59,6 +59,7 @@ export class HeaderComponent implements OnInit {
    * Opens cart dialog and displays the cart items
    */
   openDialog(): void {
+    this.openDropdown('')
     this.dialog.open(CartDialogComponent, {
       width: `400px`,
       data: {

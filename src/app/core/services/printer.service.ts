@@ -2,11 +2,9 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable, of } from 'rxjs'
 import { tap } from 'rxjs/operators'
+import { ShopDataResponse } from 'src/app/shared/interfaces/shop-data'
 import { environment } from 'src/environments/environment'
-import {
-  PrinterDataResponse,
-  PrinterListResponse,
-} from '../../shared/interfaces/printer-data'
+import { PrinterListResponse } from '../../shared/interfaces/printer-data'
 
 @Injectable({
   providedIn: 'root',
@@ -44,15 +42,15 @@ export class PrinterService {
   }
 
   /**
-   * Requests the printer table data from the API
+   * Requests the shop table data from the API
    * @returns response from the API
    */
-  getPrinterData(): Observable<PrinterDataResponse> {
+  getProductsData(): Observable<ShopDataResponse> {
     if (!this.isDataLoading && this.pageNumber < this.totalPages) {
       this.isDataLoading = true
       return this.http
-        .get<PrinterDataResponse>(
-          `${environment.baseUrl}printerData/${++this.pageNumber}`
+        .get<ShopDataResponse>(
+          `${environment.baseUrl}shopTableData/${++this.pageNumber}`
         )
         .pipe(
           tap(data => {
@@ -62,6 +60,6 @@ export class PrinterService {
           })
         )
     }
-    return of({ printerList: [], totalPages: 0, pageNumber: 0 })
+    return of({ productList: [], totalPages: 0, pageNumber: 0 })
   }
 }

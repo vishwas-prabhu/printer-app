@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatSort } from '@angular/material/sort'
 import { CartService } from 'src/app/core/services/cart.service'
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component'
-import { PrinterTableData } from 'src/app/shared/interfaces/printer-data'
+import { ShopTableData } from 'src/app/shared/interfaces/shop-data'
 
 @Component({
   selector: 'app-shop-table',
@@ -40,7 +40,7 @@ export class ShopTableComponent implements OnInit, AfterViewInit {
    * @usageNotes if `element` already exists
    * then it will be removed from the cart
    */
-  addToCart(element: PrinterTableData): void {
+  addToCart(element: ShopTableData): void {
     const index = this.cart.getIndexOfCartItem(element.id)
     if (index >= 0) {
       this.openDialog(index, element.substrate_name)
