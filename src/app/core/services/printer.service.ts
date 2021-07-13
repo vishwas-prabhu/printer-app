@@ -43,9 +43,13 @@ export class PrinterService {
 
   /**
    * Requests the shop table data from the API
+   * @param pageNo respresents param for API call
    * @returns response from the API
    */
-  getProductsData(): Observable<ShopDataResponse> {
+  getProductsData(pageNo: number): Observable<ShopDataResponse> {
+    if (pageNo === 1) {
+      this.pageNumber = 0
+    }
     if (!this.isDataLoading && this.pageNumber < this.totalPages) {
       this.isDataLoading = true
       return this.http

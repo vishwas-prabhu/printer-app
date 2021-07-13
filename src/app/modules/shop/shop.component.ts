@@ -23,15 +23,19 @@ export class ShopComponent implements OnInit {
   constructor(private printerService: PrinterService) {}
 
   ngOnInit(): void {
-    this.loadTableData()
+    this.loadTableData(1)
   }
 
   /**
    * Loads the shop table data from API
+   * @param pageNo represents page number from which data to be fetched from API
+   *
+   * @usageNotes if `pageNo` is 0 and already fetched page is 3
+   * then page 4 will be fetched from API
    */
-  loadTableData(): void {
+  loadTableData(pageNo: number): void {
     this.printerService
-      .getProductsData()
+      .getProductsData(pageNo)
       .subscribe(
         (data: ShopDataResponse) =>
           (this.dataSource.data = [
