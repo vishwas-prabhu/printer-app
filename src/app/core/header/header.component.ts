@@ -5,6 +5,7 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
+  HostListener,
 } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { Router, Event, NavigationStart } from '@angular/router'
@@ -16,14 +17,25 @@ import { CartDialogComponent } from '../cart-dialog/cart-dialog.component'
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  constructor(private router: Router, private dialog: MatDialog) {}
   notifications!: string[]
   pageName!: string
   showDropdown!: string
+
   @Output() openSideBar = new EventEmitter<any>()
 
   @ViewChild('cartButton') public cartButton!: ElementRef
 
-  constructor(private router: Router, private dialog: MatDialog) {}
+  @HostListener('window:click', ['$event'])
+  onClick($event: any): void {
+    // console.log($event.path[1].classList[0])
+    if (
+      this.showDropdown &&
+      $event.path[1].classList[0] !== 'header__rightOption'
+    ) {
+      this.showDropdown = ''
+    }
+  }
 
   /**
    * Function will load the notifications from API
@@ -59,7 +71,7 @@ export class HeaderComponent implements OnInit {
    * Opens cart dialog and displays the cart items
    */
   openDialog(): void {
-    this.openDropdown('')
+    this.showDropdown = ''
     this.dialog.open(CartDialogComponent, {
       width: `400px`,
       data: {
