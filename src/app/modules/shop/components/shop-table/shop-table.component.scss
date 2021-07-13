@@ -62,3 +62,12 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  table {
+    th,
+    td {
+      padding-right: 10px;
+    }
+  }
+}
