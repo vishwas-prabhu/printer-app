@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
     // console.log($event.path[1].classList[0])
     if (
       this.showDropdown &&
-      $event.path[1].classList[0] !== 'header__rightOption'
+      $event.path[1].classList[0] !== 'header-right-option'
     ) {
       this.showDropdown = ''
     }

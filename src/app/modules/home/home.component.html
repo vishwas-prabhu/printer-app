@@ -1,11 +1,11 @@
 <div class="home">
   <div class="row">
     <div class="col-12 col-sm-6 col-md-3" *ngFor="let card of dashboardData">
-      <div class="home__card">
-        <div class="home__cardIcon" [style.background-color]="card.colorCode">
+      <div class="home-card">
+        <div class="home-card-icon" [style.background-color]="card.colorCode">
           <mat-icon>{{ card.icon }}</mat-icon>
         </div>
-        <div class="home__cardInfo">
+        <div class="home-card-info">
           <h3>{{ card.number }}</h3>
           <p>{{ card.name }}</p>
         </div>

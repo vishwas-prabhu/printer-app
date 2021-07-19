@@ -36,6 +36,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  /**
+   * Handles the submit event of the login form
+   */
   onSubmit(): void {
     this.loginForm.disable()
     this.authService.setLoginData(this.loginForm.value).then(data => {
@@ -49,6 +52,9 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  /**
+   * Toggles the type of input
+   */
   togglePasswordType(): void {
     this.passwordType = this.passwordType === 'text' ? 'password' : 'text'
   }
