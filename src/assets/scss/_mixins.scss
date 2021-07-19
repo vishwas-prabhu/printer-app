@@ -1,12 +1,12 @@
 @mixin table-styles {
-  .content__table {
+  .content-table {
     border: 1px solid #ccccccd4;
     border-radius: 4px;
     margin-bottom: 1rem;
     background: white;
     box-shadow: 2px 2px 8px 0px #1f1f1f1c;
 
-    .content__tableHeader {
+    .content-table-header {
       padding: 12px 10px;
       display: flex;
       justify-content: space-between;
@@ -55,7 +55,7 @@
       }
     }
 
-    .content__tableBody {
+    .content-table-body {
       height: 250px;
       overflow: auto;
       table {
@@ -75,7 +75,7 @@
       }
     }
 
-    .content__tableFooter {
+    .content-table-footer {
       padding: 10px;
       display: flex;
       justify-content: flex-end;

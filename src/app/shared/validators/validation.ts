@@ -1,5 +1,10 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms'
 
+/**
+ * Validates the password
+ * @param control FormControl
+ * @returns null | errors
+ */
 export const passwordValidator: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {

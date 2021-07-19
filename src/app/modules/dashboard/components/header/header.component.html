@@ -1,14 +1,14 @@
 <div class="header">
-  <div class="header__left">
+  <div class="header-left">
     <mat-icon (click)="openMenu()">menu</mat-icon>
-    <div class="header__info">
-      <p class="header_infoTitle">Dashboard</p>
-      <p class="header_infoSubTitle">{{ pageName }}</p>
+    <div class="header-info">
+      <p class="header-info-title">Dashboard</p>
+      <p class="header-info-subtitle">{{ pageName }}</p>
     </div>
   </div>
-  <div class="header__right">
-    <div class="header__rightOption" (click)="openDropdown('notifications')">
-      <mat-icon class="header__rightIcon">notifications_none</mat-icon>
+  <div class="header-right">
+    <div class="header-right-option" (click)="openDropdown('notifications')">
+      <mat-icon class="header-right-icon">notifications_none</mat-icon>
       <div *ngIf="showDropdown === 'notifications'" class="drop-down">
         <span class="arrow"></span>
         <p class="title">Notifications</p>
@@ -22,10 +22,10 @@
         </ul>
       </div>
     </div>
-    <div #cartButton class="header__rightOption" (click)="openDialog()">
-      <mat-icon class="header__rightIcon">shopping_bag</mat-icon>
+    <div #cartButton class="header-right-option" (click)="openDialog()">
+      <mat-icon class="header-right-icon">shopping_bag</mat-icon>
     </div>
-    <div class="header__rightOption">
+    <div class="header-right-option">
       <img src="assets/user.png" (click)="openDropdown('profile')" alt="" />
       <div *ngIf="showDropdown === 'profile'" class="drop-down">
         <span class="arrow"></span>

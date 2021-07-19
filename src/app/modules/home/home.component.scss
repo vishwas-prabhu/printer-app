@@ -2,7 +2,7 @@
 
 .home {
   padding-top: 15px;
-  .home__card {
+  &-card {
     background: $color-white;
     width: 100%;
     border-radius: 5px;
@@ -11,7 +11,7 @@
     align-items: center;
     margin-bottom: 15px;
 
-    .home__cardIcon {
+    &-icon {
       width: 50px;
       height: 50px;
       display: grid;
@@ -24,7 +24,7 @@
       }
     }
 
-    .home__cardInfo {
+    &-info {
       padding-left: 1rem;
       h3 {
         font-weight: 500;
