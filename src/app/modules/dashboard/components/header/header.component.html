@@ -26,20 +26,16 @@
       <mat-icon class="header__rightIcon">shopping_bag</mat-icon>
     </div>
     <div class="header__rightOption">
-      <img
-        src="https://avatars.dicebear.com/api/human/header.svg"
-        (click)="openDropdown('profile')"
-        alt=""
-      />
+      <img src="assets/user.png" (click)="openDropdown('profile')" alt="" />
       <div *ngIf="showDropdown === 'profile'" class="drop-down">
         <span class="arrow"></span>
         <p class="title">Joe Newman</p>
         <ul>
-          <li routerLink="/home">Profile</li>
-          <li routerLink="/shop">Shop</li>
-          <li routerLink="/printer">My Printers</li>
+          <li routerLink="./home">Profile</li>
+          <li routerLink="./shop">Shop</li>
+          <li routerLink="./printer">My Printers</li>
         </ul>
-        <p class="title logout">Logout</p>
+        <p class="title logout" (click)="openLogoutDialog()">Logout</p>
       </div>
     </div>
   </div>

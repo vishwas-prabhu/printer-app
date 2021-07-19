@@ -9,7 +9,9 @@ import {
 } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { Router, Event, NavigationStart } from '@angular/router'
-import { CartDialogComponent } from '../cart-dialog/cart-dialog.component'
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component'
+import { CartDialogComponent } from '../../../../core/cart-dialog/cart-dialog.component'
+import { AuthService } from '../../../../core/services/auth.service'
 
 @Component({
   selector: 'app-header',
@@ -17,10 +19,15 @@ import { CartDialogComponent } from '../cart-dialog/cart-dialog.component'
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router, private dialog: MatDialog) {}
   notifications!: string[]
   pageName!: string
   showDropdown!: string
+
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private authService: AuthService
+  ) {}
 
   @Output() openSideBar = new EventEmitter<any>()
 
@@ -80,8 +87,33 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  /**
+   * Opens the confirmation dialog at the center of screen
+   *
+   * @usageNotes
+   * Confirm dialog contains `ok` and `cancel` buttons
+   */
+  openLogoutDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: `400px`,
+      data: {
+        title: 'Confirm Logout !',
+        body: `Your filters will reset and cookies will be deleted. Are you sure you want to Logout ?`,
+        buttonOne: 'Go Back',
+        buttonTwo: 'Ok',
+      },
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.logout()
+      }
+    })
+  }
+
   ngOnInit(): void {
     this.loadNotifications()
+    this.pageName = this.router.url.slice(1)
 
     // Subscribe to router event and update the header with current route path
     this.router.events.subscribe((event: Event) => {
@@ -89,5 +121,9 @@ export class HeaderComponent implements OnInit {
         this.pageName = event.url.slice(1)
       }
     })
+  }
+
+  logout(): void {
+    this.authService.logout()
   }
 }
