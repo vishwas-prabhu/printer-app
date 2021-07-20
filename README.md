@@ -11,10 +11,7 @@ Printer-app
 |
 ├── src
 │   ├── app
-│   │   ├── app.component.html
-│   │   ├── app.component.scss
-│   │   ├── app.component.spec.ts
-│   │   ├── app.component.ts
+│   │   ├── app.component.html|scss|spec.ts|ts
 │   │   ├── app.module.ts
 │   │   ├── app-routing.module.ts
 │   │   ├── core
