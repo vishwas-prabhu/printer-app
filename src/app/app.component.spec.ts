@@ -57,27 +57,6 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('printer-app')
   })
 
-  it('should have showSidebar value as false', () => {
-    expect(app.showSidebar).toBeFalsy()
-  })
-
-  // tslint:disable-next-line: max-line-length
-  it('should toggle value of showSidebar when toggleSidebar is called', () => {
-    expect(app.showSidebar).toBe(false)
-    app.toggleSidebar()
-    fixture.detectChanges()
-    expect(app.showSidebar).toBe(true)
-  })
-
-  it('should have show-sidebar class when showSidebar is true', () => {
-    let sidebar = fixture.nativeElement.querySelector('.show-sidebar')
-    expect(sidebar).toBeFalsy()
-    app.showSidebar = true
-    fixture.detectChanges()
-    sidebar = fixture.nativeElement.querySelector('.show-sidebar')
-    expect(sidebar).toBeTruthy()
-  })
-
   it('redirects to /home path when current path is ""', fakeAsync(() => {
     router.navigate([''])
     tick()
