@@ -113,6 +113,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadNotifications()
+    this.authService.setUserInfo()
     this.pageName = this.router.url.slice(1)
 
     // Subscribe to router event and update the header with current route path
@@ -125,5 +126,9 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     this.authService.logout()
+  }
+
+  get username(): string {
+    return this.authService.loggedInUser
   }
 }

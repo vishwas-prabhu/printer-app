@@ -29,7 +29,7 @@
       <img src="assets/user.png" (click)="openDropdown('profile')" alt="" />
       <div *ngIf="showDropdown === 'profile'" class="drop-down">
         <span class="arrow"></span>
-        <p class="title">Joe Newman</p>
+        <p class="title">{{ username }}</p>
         <ul>
           <li routerLink="./home">Profile</li>
           <li routerLink="./shop">Shop</li>
