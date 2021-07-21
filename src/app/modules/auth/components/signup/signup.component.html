@@ -1,0 +1,84 @@
+<div class="auth">
+  <div class="auth-container">
+    <lottie-player
+      class="image"
+      autoplay
+      loop
+      mode="normal"
+      src="assets/new-user.json"
+    >
+    </lottie-player>
+    <p>Sign In</p>
+    <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <div class="input-area">
+        <label for="username">Name</label>
+        <input id="username" type="text" formControlName="name" />
+        <div
+          class="error"
+          [class.show]="name.invalid && (name.dirty || name.touched)"
+        >
+          <span *ngIf="name.errors?.required">Name is required</span>
+          <span *ngIf="name.errors?.minlength">Enter correct name</span>
+        </div>
+      </div>
+      <div class="input-area">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          (input)="emailError = ''"
+        />
+        <div
+          class="error"
+          [class.show]="
+            emailError.length ||
+            (email.invalid && (email.dirty || email.touched))
+          "
+        >
+          <span *ngIf="!emailError.length && email.errors?.required"
+            >Email is required</span
+          >
+          <span *ngIf="email.errors?.email">Enter a valid Email</span>
+          <span *ngIf="emailError.length"
+            >{{ emailError }}
+            <a routerLink="../login" [ngStyle]="{ 'text-decoration': 'none' }"
+              >Login here!</a
+            ></span
+          >
+        </div>
+      </div>
+      <div class="input-area">
+        <label for="password">Password</label>
+        <input id="password" [type]="passwordType" formControlName="password" />
+        <span class="icon" (click)="togglePasswordType()">
+          <mat-icon
+            >{{ passwordType !== 'text' ? 'visibility' : 'visibility_off' }}
+          </mat-icon>
+        </span>
+        <span class="message">
+          Your password must be more than 8 characters long, should contain
+          at-least 1 Uppercase, 1 Lowercase, 1 Numeric and 1 special character.
+        </span>
+        <div
+          class="error"
+          [class.show]="
+            password.invalid && (password.dirty || password.touched)
+          "
+        >
+          <span *ngIf="password.errors?.required">Password is required</span>
+          <span *ngIf="password.errors?.passwordError"
+            >Enter a valid password</span
+          >
+        </div>
+      </div>
+      <button
+        [class.disabled]="!signInForm.valid"
+        type="submit"
+        [disabled]="!signInForm.valid"
+      >
+        Create Account
+      </button>
+    </form>
+  </div>
+</div>

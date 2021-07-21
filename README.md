@@ -15,13 +15,13 @@ Printer-app
 │   │   ├── app.module.ts
 │   │   ├── app-routing.module.ts
 │   │   ├── core
-│   │   │   ├── authentication
-│   │   │   │   └── login
-│   │   │   │       └── login.component.html|scss|spec.ts|ts
 │   │   │   ├── cart-dialog
 │   │   │   │   └── cart-dialog.component.html|scss|spec.ts|ts
+│   │   │   ├── interceptor
+│   │   │   │   ├── http.interceptor.ts
+│   │   │   │   └── index.ts
 │   │   │   ├── guards
-│   │   │   │   └── auth.guard.ts|ts
+│   │   │   │   └── auth.guard.spec.ts|ts
 │   │   │   ├── mocks
 │   │   │   │   └── mock-data.ts
 │   │   │   └── services
@@ -31,6 +31,15 @@ Printer-app
 │   │   │       ├── sort.service.spec.ts|ts
 │   │   │       └── user.service.spec.ts|ts
 │   │   ├── modules
+│   │   │   ├── auth
+│   │   │   │   ├── auth.component.html|scss|spec.ts|ts
+│   │   │   │   ├── auth.module.ts
+│   │   │   │   ├── auth-routing.module.ts
+│   │   │   │   └── components
+│   │   │   │       ├── login
+│   │   │   │       │   └── login.component.html|scss|spec.ts|ts
+│   │   │   │       └── signup
+│   │   │   │           └── signup.component.html|scss|spec.ts|ts
 │   │   │   ├── dashboard
 │   │   │   │   ├── components
 │   │   │   │   │   ├── header

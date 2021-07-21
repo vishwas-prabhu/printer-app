@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
+import { AuthService } from 'src/app/core/services/auth.service'
 import { passwordValidator } from 'src/app/shared/validators/validation'
-import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-login',
@@ -41,15 +41,18 @@ export class LoginComponent implements OnInit {
    */
   onSubmit(): void {
     this.loginForm.disable()
-    this.authService.setLoginData(this.loginForm.value).then(data => {
-      this.loginForm.enable()
-      if (data) {
-        this.router.navigateByUrl('/dashboard')
-      } else {
-        this.emailError = 'Email does not exists'
-        this.loginForm.reset()
-      }
-    })
+    this.authService
+      .handleLogin(this.loginForm.value)
+      .subscribe(({ api_response }) => {
+        this.loginForm.enable()
+
+        if (api_response.code === 200) {
+          this.router.navigateByUrl('/dashboard')
+        } else {
+          this.emailError = 'User Credentials error'
+          this.loginForm.reset()
+        }
+      })
   }
 
   /**
