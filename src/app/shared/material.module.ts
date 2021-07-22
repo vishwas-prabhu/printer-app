@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatButtonModule } from '@angular/material/button'
 import { MatMenuModule } from '@angular/material/menu'
 import { MatDividerModule } from '@angular/material/divider'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
 @NgModule({
   imports: [
     MatIconModule,
@@ -23,6 +24,7 @@ import { MatDividerModule } from '@angular/material/divider'
     MatButtonModule,
     MatMenuModule,
     MatDividerModule,
+    MatProgressBarModule,
   ],
   exports: [
     MatTableModule,
@@ -36,6 +38,7 @@ import { MatDividerModule } from '@angular/material/divider'
     MatMenuModule,
     MatTooltipModule,
     MatDividerModule,
+    MatProgressBarModule,
   ],
 })
 export class MaterialModule {}

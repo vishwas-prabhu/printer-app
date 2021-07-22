@@ -1,1 +1,4 @@
+<div *ngIf="loading.isRequestLoading | async" class="progress-bar">
+  <mat-progress-bar color="warn" mode="indeterminate"></mat-progress-bar>
+</div>
 <router-outlet></router-outlet>
