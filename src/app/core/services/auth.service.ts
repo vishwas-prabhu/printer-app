@@ -92,6 +92,7 @@ export class AuthService {
    * clears the custom filters and cookies related to the user
    */
   logout(): void {
+    this.loggedInUser = ''
     this.cookieService.delete('user_token')
     localStorage.removeItem('selectedColumns')
     this.router.navigateByUrl('/auth/login')

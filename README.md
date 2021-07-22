@@ -90,11 +90,12 @@ Printer-app
 │   │       └── validators
 │   │           └── validation.ts
 │   ├── assets
-│   │   ├── cart.png
-│   │   ├── logo.jpg
 │   │   ├── scss
 │   │   │   ├── _mixins.scss
 │   │   │   └── _variables.scss
+│   │   ├── cart.png
+│   │   ├── logo.jpg
+│   │   ├── new-user.json
 │   │   ├── user.json
 │   │   └── user.png
 │   ├── environments

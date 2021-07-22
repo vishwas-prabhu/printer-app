@@ -7,24 +7,24 @@ import {
 import { Router, Routes } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing'
 import { AppComponent } from './app.component'
-import { HomeComponent } from './modules/home/home.component'
-import { PrinterComponent } from './modules/printer/printer.component'
 import { Location } from '@angular/common'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { DashboardComponent } from './modules/dashboard/dashboard.component'
+import { AuthComponent } from './modules/auth/auth.component'
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
   },
   {
-    path: 'home',
-    component: HomeComponent,
+    path: 'dashboard',
+    component: DashboardComponent,
   },
   {
-    path: 'printer',
-    component: PrinterComponent,
+    path: 'auth',
+    component: AuthComponent,
   },
 ]
 
@@ -57,21 +57,21 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('printer-app')
   })
 
-  it('redirects to /home path when current path is ""', fakeAsync(() => {
+  it('redirects to /dashboard path when current path is ""', fakeAsync(() => {
     router.navigate([''])
     tick()
-    expect(location.path()).toBe('/home')
+    expect(location.path()).toBe('/dashboard')
   }))
 
-  it('navigate to /home path when path is "home"', fakeAsync(() => {
-    router.navigate(['/home'])
+  it('navigate to /dashboard path when path is "dashboard"', fakeAsync(() => {
+    router.navigate(['/dashboard'])
     tick()
-    expect(location.path()).toBe('/home')
+    expect(location.path()).toBe('/dashboard')
   }))
 
-  it('navigate to /printer path', fakeAsync(() => {
-    router.navigate(['/printer'])
+  it('navigate to /auth path', fakeAsync(() => {
+    router.navigate(['/auth'])
     tick()
-    expect(location.path()).toBe('/printer')
+    expect(location.path()).toBe('/auth')
   }))
 })
