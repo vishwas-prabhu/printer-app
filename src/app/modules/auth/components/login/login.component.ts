@@ -41,9 +41,8 @@ export class LoginComponent implements OnInit {
    */
   onSubmit(): void {
     this.loginForm.disable()
-    this.authService
-      .handleLogin(this.loginForm.value)
-      .subscribe(({ api_response }) => {
+    this.authService.handleLogin(this.loginForm.value).subscribe(
+      ({ api_response }) => {
         this.loginForm.enable()
 
         if (api_response.code === 200) {
@@ -52,7 +51,9 @@ export class LoginComponent implements OnInit {
           this.emailError = 'User Credentials error'
           this.loginForm.reset()
         }
-      })
+      },
+      error => console.log(error)
+    )
   }
 
   /**

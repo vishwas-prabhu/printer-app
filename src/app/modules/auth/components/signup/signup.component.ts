@@ -45,9 +45,8 @@ export class SignupComponent implements OnInit {
    */
   onSubmit(): void {
     this.signInForm.disable()
-    this.authService
-      .handleSignIn(this.signInForm.value)
-      .subscribe(({ api_response }) => {
+    this.authService.handleSignIn(this.signInForm.value).subscribe(
+      ({ api_response }) => {
         this.signInForm.enable()
 
         if (api_response.code === 200) {
@@ -56,7 +55,9 @@ export class SignupComponent implements OnInit {
           this.emailError = 'User Already Exists.'
           this.signInForm.reset()
         }
-      })
+      },
+      error => console.log(error)
+    )
   }
 
   /**
