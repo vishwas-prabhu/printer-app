@@ -75,19 +75,19 @@ describe('UserTableComponent', () => {
   })
 
   // tslint:disable-next-line: max-line-length
-  it('should assign sortingColumn value as "" when previous value is assigned', fakeAsync(() => {
-    component.sortingColumn = 'userName'
+  it('should assign sortedColumn value as "" when previous value is assigned', fakeAsync(() => {
+    component.sortedColumn = 'userName'
     tick()
     component.sort('userName')
-    expect(component.sortingColumn).toEqual('')
-    expect(component.sortingColumn).not.toEqual('userName')
+    expect(component.sortedColumn).toEqual('')
+    expect(component.sortedColumn).not.toEqual('userName')
   }))
 
-  it('should assign parameter value as sortingColumn value', fakeAsync(() => {
-    component.sortingColumn = 'userName'
+  it('should assign parameter value as sortedColumn value', fakeAsync(() => {
+    component.sortedColumn = 'userName'
     tick()
     component.sort('role')
-    expect(component.sortingColumn).toEqual('role')
-    expect(component.sortingColumn).not.toEqual('userName')
+    expect(component.sortedColumn).toEqual('role')
+    expect(component.sortedColumn).not.toEqual('userName')
   }))
 })

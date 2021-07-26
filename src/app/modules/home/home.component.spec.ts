@@ -50,7 +50,7 @@ describe('HomeComponent', () => {
   })
 
   it('should update card info with data reveived from API', () => {
-    const cards = fixture.nativeElement.querySelectorAll('.home__cardInfo h3')
+    const cards = fixture.nativeElement.querySelectorAll('.home-card-info h3')
     fixture.detectChanges()
     expect(cards[0].textContent).not.toEqual('0')
     expect(cards[0].textContent).toEqual('80')

@@ -1,0 +1,14 @@
+<div class="app">
+  <div class="app-sidebar" [class.show-sidebar]="showSidebar">
+    <app-sidebar
+      [showSideBar]="showSidebar"
+      (closeSideBar)="toggleSidebar()"
+    ></app-sidebar>
+  </div>
+  <div class="app-body">
+    <app-header (openSideBar)="toggleSidebar()"></app-header>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

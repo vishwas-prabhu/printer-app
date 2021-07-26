@@ -16,7 +16,7 @@ export class PrintTableComponent implements OnInit {
   printerData: PrinterData[] = []
   pageNo!: number
   totalPages: number[] = []
-  sortingColumn!: string
+  sortedColumn!: string
 
   constructor(
     private printerService: PrinterService,
@@ -72,19 +72,14 @@ export class PrintTableComponent implements OnInit {
    * @return void
    */
   sort(key: string): void {
-    let reverse = false
-    if (this.sortingColumn === key) {
-      reverse = true
-      this.sortingColumn = ''
-    } else {
-      this.sortingColumn = key
-    }
-
-    this.printerData = this.sortService.sortData<PrinterData>(
-      this.printerData,
-      key,
-      reverse
-    )
+    // tslint:disable-next-line: whitespace
+    ;[this.printerData, this.sortedColumn] = [
+      ...this.sortService.sortData<PrinterData>(
+        this.printerData,
+        key,
+        this.sortedColumn
+      ),
+    ]
   }
 
   ngOnInit(): void {

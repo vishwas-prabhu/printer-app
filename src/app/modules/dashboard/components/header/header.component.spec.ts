@@ -1,9 +1,11 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import {
   ComponentFixture,
   fakeAsync,
   TestBed,
   tick,
 } from '@angular/core/testing'
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 import { MatIconModule } from '@angular/material/icon'
 import { Router, Routes } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing'
@@ -12,7 +14,7 @@ import { HeaderComponent } from './header.component'
 
 const routes: Routes = [
   {
-    path: 'printer',
+    path: 'dashboard/printer',
     component: PrinterComponent,
   },
 ]
@@ -25,7 +27,12 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [RouterTestingModule.withRoutes(routes), MatIconModule],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes(routes),
+        MatIconModule,
+        MatDialogModule,
+      ],
     }).compileComponents()
     router = TestBed.inject(Router)
   })
@@ -60,12 +67,14 @@ describe('HeaderComponent', () => {
   // tslint:disable-next-line: max-line-length
   it('should update the header with path name of current page', fakeAsync(() => {
     const headerTitle = fixture.nativeElement.querySelector(
-      '.header_infoSubTitle'
+      '.header-info-subtitle'
     )
+    tick()
     expect(headerTitle.textContent).toEqual('')
-    router.navigate(['/printer'])
+    router.navigate(['/dashboard/printer'])
     tick()
     fixture.detectChanges()
-    expect(headerTitle.textContent).toEqual('printer')
+    console.log('header title', headerTitle)
+    expect(headerTitle.textContent).toEqual('dashboard/printer')
   }))
 })

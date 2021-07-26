@@ -1,0 +1,42 @@
+<div class="header">
+  <div class="header-left">
+    <mat-icon (click)="openMenu()">menu</mat-icon>
+    <div class="header-info">
+      <p class="header-info-title">Dashboard</p>
+      <p class="header-info-subtitle">{{ pageName }}</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-right-option" (click)="openDropdown('notifications')">
+      <mat-icon class="header-right-icon">notifications_none</mat-icon>
+      <div *ngIf="showDropdown === 'notifications'" class="drop-down">
+        <span class="arrow"></span>
+        <p class="title">Notifications</p>
+        <ul>
+          <li
+            *ngFor="let notification of notifications"
+            (click)="showDropdown = ''"
+          >
+            {{ notification }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div #cartButton class="header-right-option" (click)="openDialog()">
+      <mat-icon class="header-right-icon">shopping_bag</mat-icon>
+    </div>
+    <div class="header-right-option">
+      <img src="assets/user.png" (click)="openDropdown('profile')" alt="" />
+      <div *ngIf="showDropdown === 'profile'" class="drop-down">
+        <span class="arrow"></span>
+        <p class="title">{{ username }}</p>
+        <ul>
+          <li routerLink="./home">Profile</li>
+          <li routerLink="./shop">Shop</li>
+          <li routerLink="./printer">My Printers</li>
+        </ul>
+        <p class="title logout" (click)="openLogoutDialog()">Logout</p>
+      </div>
+    </div>
+  </div>
+</div>

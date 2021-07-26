@@ -34,8 +34,9 @@ describe('SortService', () => {
   })
 
   it('should return sorted data in ascending order', () => {
-    const data = service.sortData(printerData, 'id', false)
+    const [data, sortedColumn] = service.sortData(printerData, 'id', 'name')
     expect(data).toEqual(printerData)
+    expect(sortedColumn).toEqual('id')
     expect(data[0].id).not.toEqual('HPEPMC10502')
     expect(data[0].id).toEqual('HPEPMC10501')
     expect(data[1].id).toEqual('HPEPMC10502')
@@ -44,7 +45,8 @@ describe('SortService', () => {
 
   // tslint:disable-next-line: max-line-length
   it('should return sorted data in descending order when reverse set to true', () => {
-    const data = service.sortData(printerData, 'id', true)
+    const [data, sortedColumn] = service.sortData(printerData, 'id', 'id')
+    expect(sortedColumn).toEqual('')
     expect(data).toEqual(printerData)
     expect(data[0].id).not.toEqual('HPEPMC10502')
     expect(data[0].id).toEqual('HPEPMC10503')

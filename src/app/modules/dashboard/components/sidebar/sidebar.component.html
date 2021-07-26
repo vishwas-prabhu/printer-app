@@ -1,0 +1,15 @@
+<div class="sidebar" (click)="closeMenu()">
+  <a routerLink="home" class="active">
+    <mat-icon class="sidebar-icon">sync_alt</mat-icon>
+  </a>
+  <a routerLink="home" routerLinkActive="active">
+    <mat-icon class="sidebar-icon">speed</mat-icon>
+  </a>
+  <a routerLink="printer" routerLinkActive="active">
+    <mat-icon class="sidebar-icon">grid_on</mat-icon>
+  </a>
+  <a routerLink="shop" routerLinkActive="active">
+    <mat-icon class="sidebar-icon">category</mat-icon>
+  </a>
+</div>
+<div *ngIf="showSideBar" (click)="closeMenu()" class="overlay"></div>
