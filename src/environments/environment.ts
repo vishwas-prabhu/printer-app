@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  // baseUrl: 'http://localhost:3001/',
-  baseUrl: 'https://whispering-fortress-47786.herokuapp.com/',
+  baseUrl: 'http://localhost:3001/',
 }
 
 /**
