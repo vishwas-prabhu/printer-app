@@ -1,28 +1,48 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { DebugElement } from '@angular/core'
 import {
   ComponentFixture,
   fakeAsync,
   TestBed,
   tick,
 } from '@angular/core/testing'
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
+import { MatDialog, MatDialogModule } from '@angular/material/dialog'
 import { MatIconModule } from '@angular/material/icon'
+import { By } from '@angular/platform-browser'
 import { Router, Routes } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing'
+import { of } from 'rxjs'
+import { LoginComponent } from 'src/app/modules/auth/components/login/login.component'
 import { PrinterComponent } from 'src/app/modules/printer/printer.component'
 import { HeaderComponent } from './header.component'
+import { Location } from '@angular/common'
 
 const routes: Routes = [
   {
     path: 'dashboard/printer',
     component: PrinterComponent,
   },
+  {
+    path: 'auth/login',
+    component: LoginComponent,
+  },
 ]
+
+class MatDialogMock {
+  open(): any {
+    return {
+      afterClosed: () => of(true),
+    }
+  }
+}
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent
   let fixture: ComponentFixture<HeaderComponent>
   let router: Router
+  let debugElement: DebugElement
+  let dialog: MatDialog
+  let location: Location
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -33,6 +53,12 @@ describe('HeaderComponent', () => {
         MatIconModule,
         MatDialogModule,
       ],
+      providers: [
+        {
+          provide: MatDialog,
+          useClass: MatDialogMock,
+        },
+      ],
     }).compileComponents()
     router = TestBed.inject(Router)
   })
@@ -40,6 +66,9 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent)
     component = fixture.componentInstance
+    debugElement = fixture.debugElement
+    dialog = TestBed.inject(MatDialog)
+    location = TestBed.inject(Location)
     fixture.detectChanges()
   })
 
@@ -59,7 +88,10 @@ describe('HeaderComponent', () => {
 
   it('should emit openSidebar event on click', () => {
     spyOn(component.openSideBar, 'emit')
-    fixture.nativeElement.querySelector('mat-icon').click()
+
+    const sidebarButton = debugElement.query(By.css('mat-icon'))
+    sidebarButton.triggerEventHandler('click', null)
+    // fixture.nativeElement.querySelector('mat-icon').click()
     fixture.detectChanges()
     expect(component.openSideBar.emit).toHaveBeenCalled()
   })
@@ -74,7 +106,19 @@ describe('HeaderComponent', () => {
     router.navigate(['/dashboard/printer'])
     tick()
     fixture.detectChanges()
-    console.log('header title', headerTitle)
     expect(headerTitle.textContent).toEqual('dashboard/printer')
+  }))
+
+  it('should logout on click and move to login page', fakeAsync(() => {
+    component.showDropdown = 'profile'
+    fixture.detectChanges()
+
+    spyOn(component, 'openLogoutDialog').and.callThrough()
+
+    const logoutButton = debugElement.query(By.css('.logout'))
+    logoutButton.triggerEventHandler('click', null)
+    tick()
+    expect(component.openLogoutDialog).toHaveBeenCalled()
+    expect(location.path()).toEqual('/auth/login')
   }))
 })

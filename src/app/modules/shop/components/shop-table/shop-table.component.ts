@@ -23,7 +23,7 @@ export class ShopTableComponent implements OnInit {
   @Input() columnsToDisplay!: string[]
   @Output() loadNextPage = new EventEmitter<any>()
 
-  @ViewChild(MatSort, { static: true }) sort!: MatSort
+  @ViewChild(MatSort, { static: true }) matSort!: MatSort
 
   constructor(
     private snackbar: MatSnackBar,
@@ -99,6 +99,6 @@ export class ShopTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataSource.sort = this.sort
+    this.dataSource.sort = this.matSort
   }
 }
