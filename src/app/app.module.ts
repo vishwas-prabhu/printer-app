@@ -7,7 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { HttpClientModule } from '@angular/common/http'
 import { MaterialModule } from './shared/material.module'
 import { CartDialogComponent } from './core/cart-dialog/cart-dialog.component'
-import { HttpInterceptorFiles } from './core/interceptor'
+import { HttpInterceptorFiles } from './core/interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'
 
 @NgModule({
   declarations: [AppComponent, CartDialogComponent],
@@ -17,6 +19,12 @@ import { HttpInterceptorFiles } from './core/interceptor'
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     HttpInterceptorFiles,
