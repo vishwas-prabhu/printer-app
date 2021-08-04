@@ -25,6 +25,7 @@
     "@lottiefiles/lottie-player": "^1.1.1",
     "bootstrap": "^5.0.2",
     "firebase-tools": "^9.16.0",
+    "ng-connection-service": "^1.0.4",
     "ngx-cookie-service": "^11.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
