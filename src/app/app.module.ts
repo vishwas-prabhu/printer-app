@@ -15,7 +15,7 @@ import { CookieService } from 'ngx-cookie-service'
 @NgModule({
   declarations: [AppComponent, CartDialogComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
