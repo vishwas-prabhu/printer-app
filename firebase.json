@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/printer-app",
+    "public": "dist/printer-app/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
