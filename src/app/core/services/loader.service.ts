@@ -9,6 +9,8 @@ export class LoaderService {
     false
   )
 
+  isOffline = false
+
   constructor() {}
 
   setLoading(): void {
@@ -17,5 +19,13 @@ export class LoaderService {
 
   resetLoading(): void {
     Promise.resolve().then(() => this.isRequestLoading.next(false))
+  }
+
+  setToOnline(): void {
+    this.isOffline = false
+  }
+
+  setToOffline(): void {
+    this.isOffline = true
   }
 }
