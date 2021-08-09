@@ -37,6 +37,10 @@ export class CartService {
       })
   }
 
+  clearCart(): void {
+    this.cartItems = []
+  }
+
   /**
    * Removes an item from the array
    * @param index index of item to delete from array

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs'
 import { tap } from 'rxjs/operators'
 import { AuthResponse } from 'src/app/shared/interfaces/auth-response'
 import { environment } from 'src/environments/environment'
+import { CartService } from './cart.service'
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,7 @@ import { environment } from 'src/environments/environment'
 export class AuthService {
   constructor(
     private cookieService: CookieService,
+    private cartService: CartService,
     private http: HttpClient,
     private router: Router
   ) {}
@@ -95,6 +97,7 @@ export class AuthService {
     this.loggedInUser = ''
     this.cookieService.delete('user_token')
     localStorage.removeItem('selectedColumns')
+    this.cartService.clearCart()
     this.router.navigateByUrl('/auth/login')
   }
 }
