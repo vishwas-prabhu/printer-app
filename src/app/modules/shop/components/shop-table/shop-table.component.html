@@ -43,7 +43,7 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element" (click)="addToCart(element)">
         <img class="cart-icon" src="assets/box.jpg" alt="" />
-        <span [matBadge]="getSign(element.id)" matBadgeOverlap="false"></span>
+        <span [matBadge]="getSign(element._id)" matBadgeOverlap="false"></span>
       </td>
     </ng-container>
 

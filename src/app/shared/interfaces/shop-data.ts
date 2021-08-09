@@ -7,6 +7,7 @@ export interface ShopTableData {
   source: string
   substrate_name: string
   id: number
+  _id: string
 }
 
 export interface ShopDataResponse {

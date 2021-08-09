@@ -32,6 +32,7 @@ const productList = {
       model_supported: 'HP Latex 570 Printer(N2G70A)',
       added_to_cart: false,
       id: 1009,
+      _id: '1009',
     },
     {
       substrate_name: 'gravida mauris ut',
@@ -41,6 +42,7 @@ const productList = {
       manufacturer: 'Info not available',
       model_supported: 'HP Latex 570 Printer(N2G70A)',
       added_to_cart: false,
+      _id: '1010',
       id: 1010,
     },
     {
@@ -51,6 +53,7 @@ const productList = {
       manufacturer: '3P',
       model_supported: 'HP Latex 570 Printer(N2G70A)',
       added_to_cart: false,
+      _id: '1011',
       id: 1011,
     },
   ],

@@ -9,6 +9,7 @@ import {
 } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { Router, Event, NavigationStart } from '@angular/router'
+import { CartService } from 'src/app/core/services/cart.service'
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component'
 import { CartDialogComponent } from '../../../../core/cart-dialog/cart-dialog.component'
 import { AuthService } from '../../../../core/services/auth.service'
@@ -26,7 +27,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private dialog: MatDialog,
-    private authService: AuthService
+    private authService: AuthService,
+    private cartService: CartService
   ) {}
 
   @Output() openSideBar = new EventEmitter<any>()
@@ -114,6 +116,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.loadNotifications()
     this.authService.setUserInfo()
+    this.cartService.getCartItemsOfUser()
     this.pageName = this.router.url.slice(1)
 
     // Subscribe to router event and update the header with current route path

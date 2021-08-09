@@ -40,7 +40,7 @@ export class ShopTableComponent implements OnInit {
    * then it will be removed from the cart
    */
   addToCart(element: ShopTableData): void {
-    const index = this.cart.getIndexOfCartItem(element.id)
+    const index = this.cart.getIndexOfCartItem(element._id)
     if (index >= 0) {
       this.openDialog(index, element.substrate_name)
     } else {
@@ -57,7 +57,7 @@ export class ShopTableComponent implements OnInit {
    * @usageNotes
    * If id is present in cart `-` will be returned else `+` is returned
    */
-  getSign(id: number): string {
+  getSign(id: string): string {
     return this.cart.cartItems.some(item => item.id === id) ? '-' : '+'
   }
 

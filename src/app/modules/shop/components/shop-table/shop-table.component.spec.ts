@@ -25,6 +25,7 @@ const productList = [
     model_supported: 'HP Latex 570 Printer(N2G70A)',
     added_to_cart: false,
     id: 1009,
+    _id: '1009',
   },
   {
     substrate_name: 'gravida mauris ut',
@@ -35,6 +36,7 @@ const productList = [
     model_supported: 'HP Latex 570 Printer(N2G70A)',
     added_to_cart: false,
     id: 1010,
+    _id: '1010',
   },
   {
     substrate_name: 'tristique pharetra.',
@@ -45,16 +47,17 @@ const productList = [
     model_supported: 'HP Latex 570 Printer(N2G70A)',
     added_to_cart: false,
     id: 1011,
+    _id: '1011',
   },
 ]
 
 const cartServiceStub = {
-  cartItems: [{ id: 1010, name: 'tristique pharetra.' }],
-  getIndexOfCartItem(id: number): number {
+  cartItems: [{ id: '1010', name: 'tristique pharetra.' }],
+  getIndexOfCartItem(id: string): number {
     return this.cartItems.findIndex(item => item.id === id)
   },
   addItemToCart(data: ShopTableData): void {
-    this.cartItems.push({ name: data.substrate_name, id: data.id })
+    this.cartItems.push({ name: data.substrate_name, id: data._id })
   },
   removeItemFromCart(index: number): void {
     this.cartItems.splice(index, 1)
@@ -107,20 +110,20 @@ describe('ShopTableComponent', () => {
   })
 
   it('should return + sign if item is present in cart', () => {
-    expect(component.getSign(1010)).toEqual('-')
-    expect(component.getSign(1020)).toEqual('+')
+    expect(component.getSign('1010')).toEqual('-')
+    expect(component.getSign('1020')).toEqual('+')
   })
 
   it('should add the item into the cart when addToCart is invoked', () => {
-    expect(component.getSign(1009)).toEqual('+')
+    expect(component.getSign('1009')).toEqual('+')
     component.addToCart(productList[0])
-    expect(component.getSign(1009)).toEqual('-')
+    expect(component.getSign('1009')).toEqual('-')
   })
 
   // tslint:disable-next-line: max-line-length
   it('should remove the item from the card when addToCart is invoked', fakeAsync(() => {
     component.addToCart(productList[0])
     flush()
-    expect(component.getSign(1009)).toEqual('+')
+    expect(component.getSign('1009')).toEqual('+')
   }))
 })

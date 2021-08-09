@@ -11,6 +11,8 @@ import { Location } from '@angular/common'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { DashboardComponent } from './modules/dashboard/dashboard.component'
 import { AuthComponent } from './modules/auth/auth.component'
+import { ServiceWorkerModule } from '@angular/service-worker'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 const routes: Routes = [
   {
@@ -39,6 +41,8 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule.withRoutes(routes),
         HttpClientTestingModule,
+        MatSnackBarModule,
+        ServiceWorkerModule.register('service-worker.js', { enabled: false }),
       ],
       declarations: [AppComponent],
     }).compileComponents()
