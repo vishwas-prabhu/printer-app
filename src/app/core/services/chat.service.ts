@@ -12,7 +12,7 @@ export class ChatService {
   selectedRoomName: BehaviorSubject<string> = new BehaviorSubject<string>('')
 
   constructor() {
-    this.websocket = io('https://backup-server-app.herokuapp.com/', {
+    this.websocket = io(environment.baseUrl, {
       transports: ['websocket'],
     })
   }
