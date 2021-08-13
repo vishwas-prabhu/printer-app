@@ -4,5 +4,6 @@ export interface AuthResponse {
     message: string
     jwt_token: string
     name: string
+    email: string
   }
 }

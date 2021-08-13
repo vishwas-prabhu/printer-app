@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
 
-import { ChatRoutingModule } from './chat-routing.module';
-import { ChatComponent } from './chat.component';
-
+import { ChatRoutingModule } from './chat-routing.module'
+import { ChatComponent } from './chat.component'
+import { ChatRoomComponent } from './components/chat-room/chat-room.component'
+import { ChatMessagesComponent } from './components/chat-messages/chat-messages.component'
+import { MaterialModule } from 'src/app/shared/material.module'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
-  declarations: [ChatComponent],
-  imports: [
-    CommonModule,
-    ChatRoutingModule
-  ]
+  declarations: [ChatComponent, ChatRoomComponent, ChatMessagesComponent],
+  imports: [CommonModule, ChatRoutingModule, MaterialModule, FormsModule],
 })
-export class ChatModule { }
+export class ChatModule {}

@@ -20,6 +20,7 @@ export class AuthService {
   ) {}
 
   loggedInUser = ''
+  loggedInUserEmail = ''
 
   /**
    * Checks for the user_token cookie in cookies
@@ -35,9 +36,10 @@ export class AuthService {
 
   setUserInfo(): void {
     if (!this.loggedInUser.length) {
-      this.http
-        .get<any>(`${environment.baseUrl}userInfo`)
-        .subscribe(data => (this.loggedInUser = data.userInfo.name))
+      this.http.get<any>(`${environment.baseUrl}userInfo`).subscribe(data => {
+        this.loggedInUser = data.userInfo.name
+        this.loggedInUserEmail = data.userInfo.email
+      })
     }
   }
 
@@ -57,6 +59,7 @@ export class AuthService {
         tap(({ api_response }) => {
           if (api_response.code === 200) {
             this.loggedInUser = api_response.name
+            this.loggedInUserEmail = api_response.email
             this.cookieService.set('user_token', api_response.jwt_token, {
               expires: 3,
             })
@@ -81,6 +84,7 @@ export class AuthService {
         tap(({ api_response }) => {
           if (api_response.code === 200) {
             this.loggedInUser = api_response.name
+            this.loggedInUserEmail = api_response.email
             this.cookieService.set('user_token', api_response.jwt_token, {
               expires: 3,
             })
@@ -95,6 +99,7 @@ export class AuthService {
    */
   logout(): void {
     this.loggedInUser = ''
+    this.loggedInUserEmail = ''
     this.cookieService.delete('user_token')
     localStorage.removeItem('selectedColumns')
     this.cartService.clearCart()

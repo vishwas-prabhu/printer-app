@@ -1,0 +1,46 @@
+.chat {
+  padding: 2rem 0;
+  height: 100%;
+
+  &-window {
+    background: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+
+    &-left {
+      flex: 0.35;
+      background: white;
+    }
+
+    &-right {
+      flex: 0.65;
+      background: #ece8de;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .chat-window {
+    &-left {
+      flex: 0.27;
+    }
+
+    &-right {
+      flex: 0.73;
+    }
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .chat-window {
+    &-left {
+      display: none;
+    }
+    &-right {
+      flex: 1;
+    }
+  }
+}

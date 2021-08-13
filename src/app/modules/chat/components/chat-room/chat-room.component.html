@@ -1,0 +1,25 @@
+<div class="chat-room-header">
+  <h1>Messages</h1>
+  <div class="input-box">
+    <span class="search-input">
+      <mat-icon (click)="createNewRoom()">add</mat-icon>
+      <input
+        type="text"
+        placeholder="Search or start new chat"
+        [(ngModel)]="roomname"
+      />
+    </span>
+  </div>
+</div>
+<div class="chat-room-body">
+  <ng-container *ngFor="let room of rooms">
+    <div class="chat-card" (click)="loadChatMessages(room.roomname, room._id)">
+      <div class="chat-card-img"></div>
+      <div class="chat-card-info">
+        <p>{{ room.roomname }}</p>
+        <span>last message</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </ng-container>
+</div>

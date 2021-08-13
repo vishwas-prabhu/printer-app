@@ -1,0 +1,40 @@
+<div class="chat-messages">
+  <div class="chat-messages-header">
+    <div class="img"></div>
+    <div class="chat-info">
+      <p class="name">{{ roomname }}</p>
+      <span class="status">{{ typing }}</span>
+    </div>
+  </div>
+  <div #chatMessages class="chat-messages-body">
+    <ng-container *ngFor="let item of messages; let i = index">
+      <div class="message" [class.received]="item.email === useremail">
+        <div class="img">
+          <span *ngIf="item.email !== messages[i + 1]?.email"></span>
+        </div>
+        <div class="message-text">
+          <p *ngIf="item.email !== messages[i - 1]?.email" class="name">
+            {{ item.username }}
+          </p>
+          <div class="text">
+            <p>{{ item.message }}</p>
+            <span>{{ item.sentTime | date: 'HH:mm' }}</span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="chat-messages-footer">
+    <mat-icon>emoji_emotions</mat-icon>
+    <input
+      class="input"
+      placeholder="Type a new message..."
+      [(ngModel)]="message"
+      (input)="sendTyping()"
+      (focusout)="resetTyping()"
+      (keydown.enter)="sendMessage($event)"
+    />
+    <mat-icon class="send" (click)="sendMessage()">send</mat-icon>
+    <mat-icon>mic</mat-icon>
+  </div>
+</div>
