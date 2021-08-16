@@ -20,6 +20,7 @@ export class ChatMessagesComponent implements OnInit, AfterViewChecked {
   message!: string
   typing!: string
   messages: any[] = []
+  isEmojiPickerVisible = false
   roomId = ''
   roomname = ''
 
@@ -30,6 +31,10 @@ export class ChatMessagesComponent implements OnInit, AfterViewChecked {
     private authService: AuthService,
     private route: ActivatedRoute
   ) {}
+
+  addEmoji(event: any): void {
+    this.message = `${this.message}${event.emoji.native}`
+  }
 
   ngOnInit(): void {
     this.message = ''

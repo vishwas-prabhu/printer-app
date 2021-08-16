@@ -25,7 +25,11 @@
     </ng-container>
   </div>
   <div class="chat-messages-footer">
-    <mat-icon>emoji_emotions</mat-icon>
+    <mat-icon
+      (click)="isEmojiPickerVisible = !isEmojiPickerVisible"
+      [class.active]="isEmojiPickerVisible"
+      >emoji_emotions</mat-icon
+    >
     <input
       class="input"
       placeholder="Type a new message..."
@@ -37,4 +41,10 @@
     <mat-icon class="send" (click)="sendMessage()">send</mat-icon>
     <mat-icon>mic</mat-icon>
   </div>
+  <emoji-mart
+    class="emoji-mart"
+    *ngIf="isEmojiPickerVisible"
+    (emojiSelect)="addEmoji($event)"
+    title="Choose your emoji"
+  ></emoji-mart>
 </div>
