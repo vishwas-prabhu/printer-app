@@ -8,8 +8,8 @@ import { ChatService } from 'src/app/core/services/chat.service'
   styleUrls: ['./chat-room.component.scss'],
 })
 export class ChatRoomComponent implements OnInit, OnDestroy {
-  rooms: any[] = []
-  roomname = ''
+  // rooms: any[] = []
+  newRoomname = ''
 
   constructor(
     private chatService: ChatService,
@@ -17,33 +17,45 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {}
 
+  getLastMessage(lastChat: any): string {
+    if (lastChat) {
+      return `${lastChat.username}: ${lastChat.message}`
+    } else {
+      return ''
+    }
+  }
+
   ngOnInit(): void {
     const roomId = this.router.url.split('/')[3]
     this.chatService.emitEvent('allroom', '')
     this.chatService.listen('allroom').subscribe((data: any) => {
       data = JSON.parse(data)
-      this.rooms.push(...data.rooms)
+      this.chatService.updateRooms(data)
       if (roomId) {
-        const room = this.rooms.find(item => roomId === item._id)
+        const room = this.chatService.rooms.find(item => roomId === item._id)
         this.chatService.setRoomName(room.roomname)
       }
     })
     this.chatService.listen('addroom').subscribe((data: any) => {
       data = JSON.parse(data)
-      this.rooms.push(data)
+      this.chatService.addRoom(data)
     })
   }
 
   createNewRoom(): void {
-    if (this.roomname) {
-      this.chatService.emitEvent('addroom', this.roomname)
+    if (this.newRoomname) {
+      this.chatService.emitEvent('addroom', this.newRoomname)
     }
-    this.roomname = ''
+    this.newRoomname = ''
   }
 
   loadChatMessages(roomname: string, id: string): void {
     this.chatService.setRoomName(roomname)
     this.router.navigate([`./${id}`], { relativeTo: this.route })
+  }
+
+  get rooms(): any {
+    return this.chatService.rooms
   }
 
   ngOnDestroy(): void {

@@ -19,7 +19,7 @@ import { ChatService } from 'src/app/core/services/chat.service'
 export class ChatMessagesComponent implements OnInit, AfterViewChecked {
   message!: string
   typing!: string
-  messages: any[] = []
+  // messages: any[] = []
   isEmojiPickerVisible = false
   roomId = ''
   roomname = ''
@@ -39,13 +39,14 @@ export class ChatMessagesComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {
     this.message = ''
     this.typing = ''
-    this.chatService
-      .listen('message')
-      .subscribe(data => this.updateMessage(data))
+    this.chatService.listen('message').subscribe(data => {
+      this.chatService.updateMessage(data)
+      this.chatService.updateLastMessage(this.roomId, data)
+    })
     this.chatService.listen('typing').subscribe(data => this.updateTyping(data))
     this.chatService
       .listen('allmessage')
-      .subscribe(data => this.updatePreviousMessages(data))
+      .subscribe(data => this.chatService.updatePreviousMessages(data))
 
     this.chatService.selectedRoomName.subscribe(data => (this.roomname = data))
 
@@ -54,7 +55,7 @@ export class ChatMessagesComponent implements OnInit, AfterViewChecked {
         this.chatService.emitEvent('leaveRoom', this.roomId)
       }
       this.typing = ''
-      this.messages = []
+      this.chatService.resetMessages()
       this.roomId = data.params.id
       this.chatService.emitEvent('joinroom', this.roomId)
       this.chatService.emitEvent('allmessage', this.roomId)
@@ -109,19 +110,15 @@ export class ChatMessagesComponent implements OnInit, AfterViewChecked {
     })
   }
 
-  updateMessage(data: any): void {
-    this.messages.push(JSON.parse(data))
-  }
-
   updateTyping(data: any): void {
     this.typing = JSON.parse(data).message
   }
 
-  updatePreviousMessages(data: any): void {
-    this.messages.unshift(...JSON.parse(data).messages)
-  }
-
   get useremail(): string {
     return this.authService.loggedInUserEmail
+  }
+
+  get messages(): any {
+    return this.chatService.messages
   }
 }

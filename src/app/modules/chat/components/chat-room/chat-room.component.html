@@ -6,7 +6,7 @@
       <input
         type="text"
         placeholder="Search or start new chat"
-        [(ngModel)]="roomname"
+        [(ngModel)]="newRoomname"
       />
     </span>
   </div>
@@ -24,7 +24,7 @@
       </div>
       <div class="chat-card-info">
         <p>{{ room.roomname }}</p>
-        <span>last message</span>
+        <span>{{ getLastMessage(room.lastChat) | slice: 0:22 }}</span>
       </div>
     </div>
     <mat-divider></mat-divider>
