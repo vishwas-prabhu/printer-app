@@ -59,11 +59,19 @@ export class ChatMessagesComponent implements OnInit, AfterViewChecked {
       this.chatService.emitEvent('joinroom', this.roomId)
       this.chatService.emitEvent('allmessage', this.roomId)
     })
+
+    this.scrollToBottom()
   }
 
   ngAfterViewChecked(): void {
-    this.chatMessageRef.nativeElement.scrollTop =
-      this.chatMessageRef.nativeElement.scrollHeight
+    this.scrollToBottom()
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.chatMessageRef.nativeElement.scrollTop =
+        this.chatMessageRef.nativeElement.scrollHeight
+    } catch (e) {}
   }
 
   resetTyping(): void {
@@ -89,6 +97,7 @@ export class ChatMessagesComponent implements OnInit, AfterViewChecked {
       sentTime: new Date().toISOString(),
     })
     this.resetTyping()
+    this.isEmojiPickerVisible = false
     this.typing = ''
     this.message = ''
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { ChatService } from 'src/app/core/services/chat.service'
 
@@ -7,7 +7,7 @@ import { ChatService } from 'src/app/core/services/chat.service'
   templateUrl: './chat-room.component.html',
   styleUrls: ['./chat-room.component.scss'],
 })
-export class ChatRoomComponent implements OnInit {
+export class ChatRoomComponent implements OnInit, OnDestroy {
   rooms: any[] = []
   roomname = ''
 
@@ -44,5 +44,9 @@ export class ChatRoomComponent implements OnInit {
   loadChatMessages(roomname: string, id: string): void {
     this.chatService.setRoomName(roomname)
     this.router.navigate([`./${id}`], { relativeTo: this.route })
+  }
+
+  ngOnDestroy(): void {
+    this.chatService.setRoomName('')
   }
 }
