@@ -14,7 +14,14 @@
 <div class="chat-room-body">
   <ng-container *ngFor="let room of rooms">
     <div class="chat-card" (click)="loadChatMessages(room.roomname, room._id)">
-      <div class="chat-card-img"></div>
+      <div class="chat-card-img">
+        <img
+          [src]="
+            'https://avatars.dicebear.com/api/gridy/' + room.roomname + '.svg'
+          "
+          alt=""
+        />
+      </div>
       <div class="chat-card-info">
         <p>{{ room.roomname }}</p>
         <span>last message</span>

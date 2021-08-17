@@ -1,6 +1,11 @@
 <div class="chat-messages">
   <div class="chat-messages-header">
-    <div class="img"></div>
+    <div class="img">
+      <img
+        [src]="'https://avatars.dicebear.com/api/gridy/' + roomname + '.svg'"
+        alt=""
+      />
+    </div>
     <div class="chat-info">
       <p class="name">{{ roomname }}</p>
       <span class="status">{{ typing }}</span>
@@ -10,7 +15,16 @@
     <ng-container *ngFor="let item of messages; let i = index">
       <div class="message" [class.received]="item.email === useremail">
         <div class="img">
-          <span *ngIf="item.email !== messages[i + 1]?.email"></span>
+          <span *ngIf="item.email !== messages[i + 1]?.email">
+            <img
+              [src]="
+                'https://avatars.dicebear.com/api/avataaars/' +
+                item.username +
+                '.svg?b=%237d7d7d'
+              "
+              alt=""
+            />
+          </span>
         </div>
         <div class="message-text">
           <p *ngIf="item.email !== messages[i - 1]?.email" class="name">

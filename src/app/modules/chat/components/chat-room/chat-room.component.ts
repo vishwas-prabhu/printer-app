@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute, Params, Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { ChatService } from 'src/app/core/services/chat.service'
 
 @Component({
@@ -35,7 +35,9 @@ export class ChatRoomComponent implements OnInit {
   }
 
   createNewRoom(): void {
-    this.chatService.emitEvent('addroom', this.roomname)
+    if (this.roomname) {
+      this.chatService.emitEvent('addroom', this.roomname)
+    }
     this.roomname = ''
   }
 
