@@ -41,6 +41,9 @@
 }
 
 @media screen and (max-width: 675px) {
+  .chat {
+    padding: 0.75rem 0;
+  }
   .chat-window {
     &-left {
       position: absolute;
