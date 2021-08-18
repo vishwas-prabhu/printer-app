@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { ChatService } from 'src/app/core/services/chat.service'
 
 @Component({
   selector: 'app-chat',
@@ -7,11 +6,19 @@ import { ChatService } from 'src/app/core/services/chat.service'
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit, OnDestroy {
-  constructor(private chatService: ChatService) {}
+  roomTab = false
 
-  ngOnInit(): void {
-    // this.chatService.openWebSocket()
-  }
+  constructor() {}
+
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {}
+
+  showRoomTab(): void {
+    this.roomTab = true
+  }
+
+  hideRoomTab(): void {
+    this.roomTab = false
+  }
 }

@@ -1,5 +1,15 @@
 .chat-room-header {
   background: #e2e2e2;
+
+  .title {
+    display: flex;
+    align-items: center;
+    .back {
+      margin-right: 0.5rem;
+      display: none;
+      cursor: pointer;
+    }
+  }
   h1 {
     color: black;
     font-size: 2rem;
@@ -7,6 +17,7 @@
     margin: 0;
     padding: 0.75rem;
     letter-spacing: 0.25px;
+    flex: 1;
   }
 
   .input-box {
@@ -65,6 +76,18 @@
 
     &:hover {
       background: #e6e6e6;
+    }
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .chat-room {
+    &-header {
+      .title {
+        .back {
+          display: block;
+        }
+      }
     }
   }
 }

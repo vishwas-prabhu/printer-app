@@ -5,7 +5,9 @@ import {
   ElementRef,
   OnChanges,
   OnInit,
+  Output,
   ViewChild,
+  EventEmitter,
 } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
 import { AuthService } from 'src/app/core/services/auth.service'
@@ -23,6 +25,8 @@ export class ChatMessagesComponent implements OnInit, AfterViewChecked {
   isEmojiPickerVisible = false
   roomId = ''
   roomname = ''
+
+  @Output() showTab: EventEmitter<any> = new EventEmitter<any>()
 
   @ViewChild('chatMessages') public chatMessageRef!: ElementRef
 
@@ -50,15 +54,20 @@ export class ChatMessagesComponent implements OnInit, AfterViewChecked {
 
     this.chatService.selectedRoomName.subscribe(data => (this.roomname = data))
 
-    this.route.paramMap.subscribe((data: Params) => {
+    this.route.queryParamMap.subscribe((data: Params) => {
       if (this.roomId) {
         this.chatService.emitEvent('leaveRoom', this.roomId)
       }
       this.typing = ''
       this.chatService.resetMessages()
-      this.roomId = data.params.id
-      this.chatService.emitEvent('joinroom', this.roomId)
-      this.chatService.emitEvent('allmessage', this.roomId)
+      this.roomId = data.params.chatId
+
+      if (this.roomId) {
+        this.chatService.emitEvent('joinroom', this.roomId)
+        this.chatService.emitEvent('allmessage', this.roomId)
+      } else {
+        this.showRoomTab()
+      }
     })
 
     this.scrollToBottom()
@@ -108,6 +117,10 @@ export class ChatMessagesComponent implements OnInit, AfterViewChecked {
       roomid: this.roomId,
       message: `${this.authService.loggedInUser} is typing...`,
     })
+  }
+
+  showRoomTab(): void {
+    this.showTab.emit()
   }
 
   updateTyping(data: any): void {

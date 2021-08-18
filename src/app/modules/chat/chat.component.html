@@ -1,10 +1,10 @@
 <div class="chat">
   <div class="chat-window">
-    <div class="chat-window-left">
-      <app-chat-room></app-chat-room>
+    <div class="chat-window-left" [class.show-tab]="roomTab">
+      <app-chat-room (hideTab)="hideRoomTab()"></app-chat-room>
     </div>
     <div class="chat-window-right">
-      <router-outlet></router-outlet>
+      <app-chat-messages (showTab)="showRoomTab()"></app-chat-messages>
     </div>
   </div>
 </div>

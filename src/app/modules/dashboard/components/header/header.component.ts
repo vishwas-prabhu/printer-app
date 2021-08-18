@@ -121,14 +121,14 @@ export class HeaderComponent implements OnInit {
     // Subscribe to router event and update the header with current route path
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
-        const path = event.url.slice(1).split('/')
-        this.pageName = `${path[0]}/${path[1]}`
+        const path = event.url.slice(1).split('?')
+        this.pageName = path[0]
       }
     })
 
     if (!this.pageName) {
-      const url = this.router.url.split('/')
-      this.pageName = `${url[1]}/${url[2]}`
+      const url = this.router.url.slice(1).split('?')
+      this.pageName = url[0]
     }
   }
 

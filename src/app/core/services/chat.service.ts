@@ -59,4 +59,8 @@ export class ChatService {
     const index = this.rooms.findIndex(item => item._id === id)
     this.rooms[index].lastChat = JSON.parse(data)
   }
+
+  resetRooms(): void {
+    this.rooms = []
+  }
 }

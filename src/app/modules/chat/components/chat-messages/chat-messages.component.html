@@ -1,5 +1,6 @@
-<div class="chat-messages">
+<div *ngIf="roomId" class="chat-messages">
   <div class="chat-messages-header">
+    <mat-icon class="back" (click)="showRoomTab()">menu_open</mat-icon>
     <div class="img">
       <img
         [src]="'https://avatars.dicebear.com/api/gridy/' + roomname + '.svg'"
@@ -61,4 +62,8 @@
     (emojiSelect)="addEmoji($event)"
     title="Choose your emoji"
   ></emoji-mart>
+</div>
+
+<div *ngIf="!roomId" class="no-message">
+  <h1>Click on the room to view or send messages!</h1>
 </div>

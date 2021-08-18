@@ -9,10 +9,16 @@
     display: flex;
     border-radius: 4px;
     overflow: hidden;
+    position: relative;
 
     &-left {
       flex: 0.35;
       background: white;
+      transition: 0.2s ease;
+    }
+
+    .show-tab {
+      left: 0%;
     }
 
     &-right {
@@ -37,7 +43,12 @@
 @media screen and (max-width: 675px) {
   .chat-window {
     &-left {
-      display: none;
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: -100%;
+      z-index: 11;
+      width: 100%;
     }
     &-right {
       flex: 1;

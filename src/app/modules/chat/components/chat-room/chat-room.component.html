@@ -1,5 +1,10 @@
 <div class="chat-room-header">
-  <h1>Messages</h1>
+  <div class="title">
+    <h1>Messages</h1>
+    <mat-icon *ngIf="roomId" class="back" (click)="hideRoomTab()"
+      >close</mat-icon
+    >
+  </div>
   <div class="input-box">
     <span class="search-input">
       <mat-icon (click)="createNewRoom()">add</mat-icon>

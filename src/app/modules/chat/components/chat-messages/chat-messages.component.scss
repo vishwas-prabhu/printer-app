@@ -11,6 +11,12 @@
     align-items: center;
     padding: 0 1rem;
 
+    .back {
+      display: none;
+      margin-right: 0.5rem;
+      cursor: pointer;
+    }
+
     .img {
       height: 2.25rem;
       width: 2.25rem;
@@ -139,6 +145,24 @@
 
     .send {
       margin-right: 0.5rem;
+    }
+  }
+}
+
+.no-message {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 675px) {
+  .chat-messages {
+    &-header {
+      .back {
+        display: block;
+      }
     }
   }
 }
