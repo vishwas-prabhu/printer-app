@@ -14,6 +14,7 @@
 
     span {
       color: white;
+      flex: 1;
       margin-left: 1rem;
       font-weight: bold;
       padding-right: 3rem;
@@ -27,6 +28,7 @@
 
   .active {
     background: #525252;
+    box-shadow: inset 12px 0px 0px -8px white;
   }
 
   &-icon {

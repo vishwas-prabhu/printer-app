@@ -9,6 +9,8 @@ export class SidebarComponent implements OnInit {
   @Input() showSideBar!: boolean
   @Output() closeSideBar = new EventEmitter<any>()
 
+  position = 'right'
+
   constructor() {}
 
   /**

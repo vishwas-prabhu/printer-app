@@ -1,17 +1,41 @@
 <div class="sidebar" (click)="closeMenu()">
-  <a routerLink="home" class="active">
+  <a aria-label="tooltip">
     <mat-icon class="sidebar-icon">sync_alt</mat-icon> <span>Printer</span>
   </a>
-  <a routerLink="home" routerLinkActive="active">
+  <a
+    routerLink="home"
+    routerLinkActive="active"
+    #tooltip="matTooltip"
+    matTooltip="{{ 'Home' }}"
+    matTooltipPosition="right"
+  >
     <mat-icon class="sidebar-icon">speed</mat-icon> <span>Home</span>
   </a>
-  <a routerLink="printer" routerLinkActive="active">
+  <a
+    routerLink="printer"
+    routerLinkActive="active"
+    #tooltip="matTooltip"
+    matTooltip="{{ 'Printer' }}"
+    matTooltipPosition="right"
+  >
     <mat-icon class="sidebar-icon">grid_on</mat-icon> <span>Printer</span>
   </a>
-  <a routerLink="shop" routerLinkActive="active">
+  <a
+    routerLink="shop"
+    routerLinkActive="active"
+    #tooltip="matTooltip"
+    matTooltip="{{ 'Shop' }}"
+    matTooltipPosition="right"
+  >
     <mat-icon class="sidebar-icon">category</mat-icon> <span>Shop</span>
   </a>
-  <a routerLink="chat" routerLinkActive="active">
+  <a
+    routerLink="chat"
+    routerLinkActive="active"
+    #tooltip="matTooltip"
+    matTooltip="{{ 'Chat' }}"
+    matTooltipPosition="right"
+  >
     <mat-icon class="sidebar-icon">forum</mat-icon> <span>Chat</span>
   </a>
 </div>
