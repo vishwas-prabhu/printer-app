@@ -8,6 +8,7 @@ import {
   Output,
   ViewChild,
   EventEmitter,
+  OnDestroy,
 } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
 import { AuthService } from 'src/app/core/services/auth.service'
@@ -18,13 +19,16 @@ import { ChatService } from 'src/app/core/services/chat.service'
   templateUrl: './chat-messages.component.html',
   styleUrls: ['./chat-messages.component.scss'],
 })
-export class ChatMessagesComponent implements OnInit, AfterViewChecked {
+export class ChatMessagesComponent
+  implements OnInit, AfterViewChecked, OnDestroy
+{
   message!: string
   typing!: string
   // messages: any[] = []
   isEmojiPickerVisible = false
   roomId = ''
   roomname = ''
+  allMessageSubs: any
 
   @Output() showTab: EventEmitter<any> = new EventEmitter<any>()
 
@@ -48,7 +52,7 @@ export class ChatMessagesComponent implements OnInit, AfterViewChecked {
       this.chatService.updateLastMessage(this.roomId, data)
     })
     this.chatService.listen('typing').subscribe(data => this.updateTyping(data))
-    this.chatService
+    this.allMessageSubs = this.chatService
       .listen('allmessage')
       .subscribe(data => this.chatService.updatePreviousMessages(data))
 
@@ -75,6 +79,10 @@ export class ChatMessagesComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked(): void {
     this.scrollToBottom()
+  }
+
+  ngOnDestroy(): void {
+    this.allMessageSubs.unsubscribe()
   }
 
   scrollToBottom(): void {
