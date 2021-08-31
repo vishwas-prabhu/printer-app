@@ -1,18 +1,18 @@
 <div class="sidebar" (click)="closeMenu()">
   <a routerLink="home" class="active">
-    <mat-icon class="sidebar-icon">sync_alt</mat-icon>
+    <mat-icon class="sidebar-icon">sync_alt</mat-icon> <span>Printer</span>
   </a>
   <a routerLink="home" routerLinkActive="active">
-    <mat-icon class="sidebar-icon">speed</mat-icon>
+    <mat-icon class="sidebar-icon">speed</mat-icon> <span>Home</span>
   </a>
   <a routerLink="printer" routerLinkActive="active">
-    <mat-icon class="sidebar-icon">grid_on</mat-icon>
+    <mat-icon class="sidebar-icon">grid_on</mat-icon> <span>Printer</span>
   </a>
   <a routerLink="shop" routerLinkActive="active">
-    <mat-icon class="sidebar-icon">category</mat-icon>
+    <mat-icon class="sidebar-icon">category</mat-icon> <span>Shop</span>
   </a>
   <a routerLink="chat" routerLinkActive="active">
-    <mat-icon class="sidebar-icon">forum</mat-icon>
+    <mat-icon class="sidebar-icon">forum</mat-icon> <span>Chat</span>
   </a>
 </div>
 <div *ngIf="showSideBar" (click)="closeMenu()" class="overlay"></div>

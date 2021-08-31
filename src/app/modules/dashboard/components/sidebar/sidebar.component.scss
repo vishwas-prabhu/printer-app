@@ -5,13 +5,28 @@
   flex-direction: column;
   position: relative;
   z-index: 121;
+
   a {
     text-decoration: none;
     padding: 16px 20px;
+    display: flex;
+    align-items: center;
+
+    span {
+      color: white;
+      margin-left: 1rem;
+      font-weight: bold;
+      padding-right: 3rem;
+    }
+
+    &:hover {
+      background: #0000006e;
+      box-shadow: inset 12px 0px 0px -8px white;
+    }
   }
 
   .active {
-    background-color: $color-violet-dark;
+    background: #525252;
   }
 
   &-icon {
