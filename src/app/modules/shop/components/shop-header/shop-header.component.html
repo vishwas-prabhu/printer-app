@@ -1,6 +1,11 @@
 <div class="home-header">
   <div class="search">
-    <input type="text" placeholder="search" />
+    <input
+      type="text"
+      placeholder="search"
+      [(ngModel)]="searchText"
+      (keyup)="applyFilter()"
+    />
     <mat-icon>filter_alt</mat-icon>
   </div>
   <div class="filter">

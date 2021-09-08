@@ -16,6 +16,9 @@ import { FilterDialogComponent } from '../filter-dialog/filter-dialog.component'
 })
 export class ShopHeaderComponent implements OnInit {
   @Output() updateColumn = new EventEmitter<object>()
+  @Output() searchChange = new EventEmitter<string>()
+
+  searchText = ''
 
   selectedTableColumns = {
     substrate_name: true,
@@ -33,6 +36,10 @@ export class ShopHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.setLocalStorage()
+  }
+
+  applyFilter(): void {
+    this.searchChange.emit(this.searchText)
   }
 
   /**

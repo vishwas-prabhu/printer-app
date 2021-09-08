@@ -5,6 +5,7 @@ import {
   Output,
   ViewChild,
   EventEmitter,
+  OnChanges,
 } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { MatSnackBar } from '@angular/material/snack-bar'
@@ -18,9 +19,10 @@ import { ShopTableData } from 'src/app/shared/interfaces/shop-data'
   templateUrl: './shop-table.component.html',
   styleUrls: ['./shop-table.component.scss'],
 })
-export class ShopTableComponent implements OnInit {
+export class ShopTableComponent implements OnInit, OnChanges {
   @Input() dataSource: any
   @Input() columnsToDisplay!: string[]
+  @Input() searchText!: string
   @Output() loadNextPage = new EventEmitter<any>()
 
   @ViewChild(MatSort, { static: true }) matSort!: MatSort
@@ -100,5 +102,9 @@ export class ShopTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource.sort = this.matSort
+  }
+
+  ngOnChanges(): void {
+    this.dataSource.filter = this.searchText.trim().toLowerCase()
   }
 }

@@ -1,9 +1,11 @@
 <div class="shop">
   <app-shop-header
     (updateColumn)="updateDisplayColumns($event)"
+    (searchChange)="applyFilter($event)"
   ></app-shop-header>
   <app-shop-table
     [dataSource]="dataSource"
+    [searchText]="searchText"
     [columnsToDisplay]="columnsToDisplay"
     (loadNextPage)="loadTableData(0)"
   ></app-shop-table>

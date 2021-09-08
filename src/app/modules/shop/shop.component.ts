@@ -19,11 +19,16 @@ export class ShopComponent implements OnInit {
     'model_supported',
     'added_to_cart',
   ]
+  searchText = ''
 
   constructor(private printerService: PrinterService) {}
 
   ngOnInit(): void {
     this.loadTableData(1)
+  }
+
+  applyFilter(data: string): void {
+    this.searchText = data
   }
 
   /**
